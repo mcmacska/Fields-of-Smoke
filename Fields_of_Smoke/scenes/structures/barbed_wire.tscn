@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bjh47ybv82sbb"]
+
+[ext_resource type="Script" uid="uid://tim4834y6gxj" path="res://scripts/barbed_wire.gd" id="1_h2vd3"]
+
+[node name="BarbedWire" type="Node3D" unique_id=1705928998]
+script = ExtResource("1_h2vd3")
+
+[node name="Area2D" type="Area3D" parent="." unique_id=652013216]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area2D" unique_id=369227394]
+
+[node name="Sprite2D" type="Sprite3D" parent="Area2D" unique_id=366490887]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0, 0, -8, 0)
+
+[node name="Sprite2D2" type="Sprite3D" parent="Area2D" unique_id=2126033459]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0, 0, 8, 0)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

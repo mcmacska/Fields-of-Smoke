@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dlxfysg3nvy8t"]
+
+[ext_resource type="PackedScene" uid="uid://bbp33i2a4asbc" path="res://assets/misc/crate.glb" id="2_aofd6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7s73l"]
+size = Vector3(1.0015192, 0.49971008, 0.5002284)
+
+[node name="Crate" type="RigidBody3D" unique_id=1335287202]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2074532378]
+shape = SubResource("BoxShape3D_7s73l")
+
+[node name="crate" parent="." unique_id=1517456468 instance=ExtResource("2_aofd6")]

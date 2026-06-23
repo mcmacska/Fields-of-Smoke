@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://clgwi6nuseyvn"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_86y1i"]
+
+[node name="Slope" type="RigidBody3D" unique_id=1335287202]
+collision_layer = 4
+collision_mask = 7
+
+[node name="Face2" type="MeshInstance3D" parent="." unique_id=2145502266]
+transform = Transform3D(20, 0, 0, 0, 10, 0, 0, 0, 5, 0, 5.0292096, 0)
+layers = 4
+mesh = SubResource("PrismMesh_86y1i")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="." unique_id=129481347]
+depth = 5.0
+polygon = PackedVector2Array(0, 10, -10, 0, 10, 0)

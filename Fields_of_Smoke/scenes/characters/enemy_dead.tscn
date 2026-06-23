@@ -1,0 +1,60 @@
+[gd_scene format=4 uid="uid://dv4kfvmm17pki"]
+
+[ext_resource type="PackedScene" uid="uid://cgxyl50ai646i" path="res://scenes/characters/enemy_body.tscn" id="1_unufl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tpr30"]
+radius = 0.2529297
+height = 1.7861328
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdpql"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.35412624, 0.90633965, 0.32527804, 1)
+metallic = 0.06153846
+roughness = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lnonp"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_unufl"]
+resource_name = "enemy_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_pdpql"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_lnonp")
+
+[node name="EnemyDead" type="RigidBody3D" unique_id=1993592139]
+collision_mask = 7
+mass = 100.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1313098941]
+shape = SubResource("CapsuleShape3D_tpr30")
+
+[node name="body" parent="." unique_id=1787118928 instance=ExtResource("1_unufl")]
+
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=59158045]
+transform = Transform3D(-3.496911e-09, 0, 0.16, 0, 0.08, 0, -0.08, 0, -6.993822e-09, 0.0028829575, 0.5884119, -0.20214908)
+visible = false
+mesh = SubResource("ArrayMesh_unufl")

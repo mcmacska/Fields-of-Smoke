@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bjkrorlhs8svp"]
+
+[ext_resource type="Script" uid="uid://da7pcasxljndl" path="res://scripts/misc/capture_bar_ui.gd" id="1_lnuo3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnuo3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mij0j"]
+
+[node name="CaptureBarUI" type="Control" unique_id=89795610]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lnuo3")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1996282430]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_lnuo3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mij0j")
+fill_mode = 3
+show_percentage = false
+
+[node name="Name" type="Label" parent="." unique_id=1346828660]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
