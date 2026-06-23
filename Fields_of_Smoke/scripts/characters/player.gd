@@ -18,6 +18,8 @@ var recoil_yaw_target := 0.0
 const AIR_ACCEL: float = 0.8
 
 var is_running: bool = false
+#totally not a ben10 reference
+const xlr8: float = 0.2
 const BASE_SPEED: float = 10.0
 @export var speed_changer: float = 1.0
 var internal_speed_changer: float = 1.0
@@ -39,7 +41,7 @@ var inventory: Array = [null, null, null, null]
 var current_weapon_index := 0
 var last_weapon_index := 0
 var current_weapon: Node = null
-@onready var weapon_holder: Node3D = $CameraPivot/WeaponHolder
+@onready var weapon_holder: Node3D = $WeaponHolder
 signal ammo_changed(current, max)
 signal aim_changed(is_ads)
 signal hit()
@@ -174,8 +176,8 @@ func manage_movement():
 	direction = (right * input_dir.x + forward * input_dir.y).normalized()
 	
 	if is_on_floor():
-		velocity.x = direction.x * BASE_SPEED * internal_speed_changer * speed_changer
-		velocity.z = direction.z * BASE_SPEED * internal_speed_changer * speed_changer
+		velocity.x = lerp(velocity.x, direction.x * BASE_SPEED * internal_speed_changer * speed_changer, xlr8)
+		velocity.z = lerp(velocity.z, direction.z * BASE_SPEED * internal_speed_changer * speed_changer, xlr8)
 	else:
 		velocity.x = direction.x * BASE_SPEED * speed_changer
 		velocity.z = direction.z * BASE_SPEED * speed_changer

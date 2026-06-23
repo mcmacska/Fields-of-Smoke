@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://duxj8fb6a54by" path="res://scripts/Health.gd" id="3_ifusu"]
 [ext_resource type="Script" uid="uid://bx2c1htcswki1" path="res://scenes/characters/camera.gd" id="4_bs8hp"]
 [ext_resource type="PackedScene" uid="uid://lb622yjiln5v" path="res://scenes/characters/player_mesh.tscn" id="4_ifusu"]
+[ext_resource type="Script" uid="uid://cykjvjlwdyeij" path="res://scripts/characters/weapon_holder.gd" id="5_atpat"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vsclp"]
 radius = 0.25341797
@@ -30,4 +31,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5690636, -0.0018848777)
 cull_mask = 1048567
 script = ExtResource("4_bs8hp")
 
-[node name="WeaponHolder" type="Node3D" parent="CameraPivot" unique_id=929256609 groups=["friends"]]
+[node name="WeaponHolder" type="Node3D" parent="." unique_id=929256609 node_paths=PackedStringArray("camera_p", "player") groups=["friends"]]
+top_level = true
+script = ExtResource("5_atpat")
+camera_p = NodePath("../CameraPivot")
+player = NodePath("..")
