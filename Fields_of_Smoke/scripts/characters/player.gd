@@ -18,6 +18,8 @@ var recoil_yaw_target := 0.0
 const AIR_ACCEL: float = 0.8
 
 var is_running: bool = false
+#totally not a ben10 reference
+const xlr8: float = 0.2
 const BASE_SPEED: float = 10.0
 @export var speed_changer: float = 1.0
 var internal_speed_changer: float = 1.0
@@ -39,20 +41,23 @@ var inventory: Array = [null, null, null, null]
 var current_weapon_index := 0
 var last_weapon_index := 0
 var current_weapon: Node = null
-@onready var weapon_holder: Node3D = $CameraPivot/WeaponHolder
+var ads: bool = false
+@onready var weapon_holder: Node3D = $WeaponHolder
 signal ammo_changed(current, max)
 signal aim_changed(is_ads)
 signal hit()
 
 # camera movement effects
 const BOB_FREQ: float = 1.5
-const BOB_AMP: float = 0.02
+var BOB_AMP: float = 0.02
 var bob_time: float = 0.0
 var camera_origin: Vector3 = Vector3.ZERO
 var horizontal_speed: float = 0.0
 var target_offset: Vector3 = Vector3.ZERO
 var moving_on_floor: bool = false
 var bob_phase: float = 0.0
+var lean_amount: float = 0.02
+var lean_speed: float = 0.05
 
 func _on_hit():
 	hit.emit()
@@ -104,11 +109,15 @@ func _process(delta):
 	# aim down sight
 	var target = current_weapon.hip_position
 	if Input.is_action_just_pressed("ADS"):
-		current_weapon.is_ads = true
-		aim_changed.emit(true)
+		ads = true
+		current_weapon.is_ads = ads
+		weapon_holder.is_ads = ads
+		aim_changed.emit(ads)
 	if Input.is_action_just_released("ADS"):
-		current_weapon.is_ads = false
-		aim_changed.emit(false)
+		ads = false
+		current_weapon.is_ads = ads
+		weapon_holder.is_ads = ads
+		aim_changed.emit(ads)
 	# switch last item in inventory
 	#if Input.is_action_just_released("last_slot") && last_weapon_index != current_weapon_index:
 		#equip_weapon(last_weapon_index)
@@ -148,7 +157,7 @@ func manage_direction(event):
 
 func manage_gravity(delta: float):
 	if not is_on_floor():
-		velocity.y += get_gravity().y * delta
+		velocity.y += get_gravity().y * delta #szerintem egy 1.5 szorzóval jobb
 		# track fastest downward speed
 		if velocity.y < fall_speed:
 			fall_speed = velocity.y
@@ -173,12 +182,19 @@ func manage_movement():
 	
 	direction = (right * input_dir.x + forward * input_dir.y).normalized()
 	
+	var ads_multiplier = 1
+	if ads:
+		ads_multiplier = 0.5
+	
 	if is_on_floor():
-		velocity.x = direction.x * BASE_SPEED * internal_speed_changer * speed_changer
-		velocity.z = direction.z * BASE_SPEED * internal_speed_changer * speed_changer
+		velocity.x = lerp(velocity.x, direction.x * BASE_SPEED * internal_speed_changer * speed_changer * ads_multiplier, xlr8)
+		velocity.z = lerp(velocity.z, direction.z * BASE_SPEED * internal_speed_changer * speed_changer * ads_multiplier, xlr8)
 	else:
 		velocity.x = direction.x * BASE_SPEED * speed_changer
 		velocity.z = direction.z * BASE_SPEED * speed_changer
+	
+	var target_tilt = -input_dir.x * lean_amount
+	camera_pivot.rotation.z = lerp(camera_pivot.rotation.z, target_tilt, lean_speed)
 	
 	# Handle jump
 	if Input.is_action_just_pressed("jump") && is_on_floor():
@@ -274,6 +290,10 @@ func add_movement_effects(delta: float):
 	else:
 		bob_time = 0.0
 
+	if ads:
+		BOB_AMP = 0.002
+	else:
+		BOB_AMP = 0.02
 	# generate the actual bobbing motion
 	if moving_on_floor:
 		target_offset.y = sin(bob_phase) * BOB_AMP
