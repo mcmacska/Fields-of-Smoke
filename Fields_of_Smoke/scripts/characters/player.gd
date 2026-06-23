@@ -41,6 +41,7 @@ var inventory: Array = [null, null, null, null]
 var current_weapon_index := 0
 var last_weapon_index := 0
 var current_weapon: Node = null
+var ads: bool = false
 @onready var weapon_holder: Node3D = $WeaponHolder
 signal ammo_changed(current, max)
 signal aim_changed(is_ads)
@@ -48,7 +49,7 @@ signal hit()
 
 # camera movement effects
 const BOB_FREQ: float = 1.5
-const BOB_AMP: float = 0.02
+var BOB_AMP: float = 0.02
 var bob_time: float = 0.0
 var camera_origin: Vector3 = Vector3.ZERO
 var horizontal_speed: float = 0.0
@@ -106,11 +107,15 @@ func _process(delta):
 	# aim down sight
 	var target = current_weapon.hip_position
 	if Input.is_action_just_pressed("ADS"):
-		current_weapon.is_ads = true
-		aim_changed.emit(true)
+		ads = true
+		current_weapon.is_ads = ads
+		weapon_holder.is_ads = ads
+		aim_changed.emit(ads)
 	if Input.is_action_just_released("ADS"):
-		current_weapon.is_ads = false
-		aim_changed.emit(false)
+		ads = false
+		current_weapon.is_ads = ads
+		weapon_holder.is_ads = ads
+		aim_changed.emit(ads)
 	# switch last item in inventory
 	#if Input.is_action_just_released("last_slot") && last_weapon_index != current_weapon_index:
 		#equip_weapon(last_weapon_index)
@@ -175,9 +180,13 @@ func manage_movement():
 	
 	direction = (right * input_dir.x + forward * input_dir.y).normalized()
 	
+	var ads_multiplier = 1
+	if ads:
+		ads_multiplier = 0.5
+	
 	if is_on_floor():
-		velocity.x = lerp(velocity.x, direction.x * BASE_SPEED * internal_speed_changer * speed_changer, xlr8)
-		velocity.z = lerp(velocity.z, direction.z * BASE_SPEED * internal_speed_changer * speed_changer, xlr8)
+		velocity.x = lerp(velocity.x, direction.x * BASE_SPEED * internal_speed_changer * speed_changer * ads_multiplier, xlr8)
+		velocity.z = lerp(velocity.z, direction.z * BASE_SPEED * internal_speed_changer * speed_changer * ads_multiplier, xlr8)
 	else:
 		velocity.x = direction.x * BASE_SPEED * speed_changer
 		velocity.z = direction.z * BASE_SPEED * speed_changer
@@ -276,6 +285,10 @@ func add_movement_effects(delta: float):
 	else:
 		bob_time = 0.0
 
+	if ads:
+		BOB_AMP = 0.002
+	else:
+		BOB_AMP = 0.02
 	# generate the actual bobbing motion
 	if moving_on_floor:
 		target_offset.y = sin(bob_phase) * BOB_AMP
