@@ -42,6 +42,7 @@ var current_weapon: Node = null
 @onready var weapon_holder: Node3D = $CameraPivot/WeaponHolder
 signal ammo_changed(current, max)
 signal aim_changed(is_ads)
+signal hit()
 
 # camera movement effects
 const BOB_FREQ: float = 1.5
@@ -52,6 +53,9 @@ var horizontal_speed: float = 0.0
 var target_offset: Vector3 = Vector3.ZERO
 var moving_on_floor: bool = false
 var bob_phase: float = 0.0
+
+func _on_hit():
+	hit.emit()
 
 func _on_died():
 	is_dead = true
@@ -209,6 +213,8 @@ func equip_weapon(index: int):
 	if current_weapon:
 		current_weapon.cancel_reload()
 		current_weapon.hide()
+		current_weapon.is_ads = false
+		aim_changed.emit(false)
 	# Spawn new weapon
 	current_weapon = new_weapon
 	last_weapon_index = current_weapon_index # save last index

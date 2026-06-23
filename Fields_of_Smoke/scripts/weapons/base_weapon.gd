@@ -125,10 +125,15 @@ func create_ray(camera_transform: Transform3D, shooter: CharacterBody3D):
 		
 func apply_damage(body: Node3D, shooter: CharacterBody3D):
 	print("Detected:", body.name)
+	
+	var is_player = false
 	if body.is_in_group("friends") and shooter.is_in_group("friends"):
 		return
 	if body.is_in_group("enemies") and shooter.is_in_group("enemies"):
 		return
+	elif body.is_in_group("enemies") and shooter.is_in_group("player"):
+		shooter._on_hit()
+		
 	var health = body.get_node_or_null("Health")
 	if health:
 		health.take_damage(damage)

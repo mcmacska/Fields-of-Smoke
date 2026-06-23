@@ -13,6 +13,7 @@ var capture_points: Array = []
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	player.health.health_changed.connect(ui._on_health_changed)
+	player.hit.connect(ui._on_hit)
 	#player.weapon_changed.connect(weapon_changed)
 	
 	# init ammo

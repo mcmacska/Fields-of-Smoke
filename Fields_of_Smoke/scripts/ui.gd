@@ -6,8 +6,13 @@ extends CanvasLayer
 @onready var blood_screen = $BloodScreen
 @onready var hurt_sound = $HurtSound
 @onready var crosshair = $Crosshair
+#idk így jobb szeretem de ha nem tetszik így átírjuk
+@export var hithair: TextureRect
 
 var prev_health: int = 0
+
+func _on_hit():
+	hithair.did_hit()
 
 func _on_health_changed(current_health, max_health):
 	health_bar.max_value = max_health

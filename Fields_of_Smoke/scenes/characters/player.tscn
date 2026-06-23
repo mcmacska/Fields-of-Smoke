@@ -9,7 +9,7 @@
 radius = 0.25341797
 height = 1.7897949
 
-[node name="Player" type="CharacterBody3D" unique_id=1976144270 groups=["friends"]]
+[node name="Player" type="CharacterBody3D" unique_id=1976144270 groups=["friends", "player"]]
 collision_mask = 7
 script = ExtResource("1_vsclp")
 
