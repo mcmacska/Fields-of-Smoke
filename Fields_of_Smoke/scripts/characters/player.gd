@@ -192,7 +192,7 @@ func apply_speed_changer(multiplier: float):
 func add_weapon(weapon_scene: PackedScene):
 	print("add_weapon")
 	var weapon = weapon_scene.instantiate()
-	var slot = weapon.weapon_slot
+	var slot = weapon.item_slot
 	print("slot: ", slot)
 	if inventory[slot] != null:
 		inventory[slot].queue_free()

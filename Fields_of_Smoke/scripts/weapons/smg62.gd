@@ -1,7 +1,7 @@
 extends BaseWeapon
 
 func _init():
-	weapon_slot = 1
+	item_slot = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,4 +22,4 @@ func _ready() -> void:
 
 
 func trigger_held(camera_transform: Transform3D):
-	shoot(camera_transform)
+	primary_action(camera_transform)

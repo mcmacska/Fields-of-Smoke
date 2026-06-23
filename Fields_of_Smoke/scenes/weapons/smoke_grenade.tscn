@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://woewktu1s6un"]
+
+[ext_resource type="Script" uid="uid://ephugi4rpnti" path="res://scripts/weapons/smoke_grenade.gd" id="1_wcmu2"]
+[ext_resource type="PackedScene" uid="uid://d24pro6glqj0r" path="res://assets/weapons/smoke_grenade.glb" id="2_wcmu2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1mndr"]
+size = Vector3(0.051778793, 0.10112333, 0.050495148)
+
+[node name="Smoke" type="RigidBody3D" unique_id=143100727]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_wcmu2")
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="." unique_id=773982310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000756979, 0)
+shape = SubResource("BoxShape3D_1mndr")
+
+[node name="smoke_grenade" parent="." unique_id=1602396139 instance=ExtResource("2_wcmu2")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

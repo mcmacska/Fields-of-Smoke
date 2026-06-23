@@ -1,9 +1,7 @@
-extends Node3D
+extends BaseItem
 
 class_name BaseWeapon
 
-# weapon type
-@export var weapon_slot: int = 0
 
 # bullet stats
 @export var damage: int = 22
@@ -46,6 +44,7 @@ var is_ads: bool = false
 @export var hip_position: Vector3
 @export var ads_position: Vector3
 
+var camera_transform: Transform3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -77,7 +76,7 @@ func trigger_released(camera_transform: Transform3D):
 	pass
 
 
-func shoot(camera_transform: Transform3D):
+func primary_action(camera_transform: Transform3D):
 	if not can_shoot or is_reloading:
 		return
 	# auto reload if empty
