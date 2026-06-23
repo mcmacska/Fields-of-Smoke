@@ -56,7 +56,7 @@ var horizontal_speed: float = 0.0
 var target_offset: Vector3 = Vector3.ZERO
 var moving_on_floor: bool = false
 var bob_phase: float = 0.0
-var lean_amount: float = 0.2
+var lean_amount: float = 0.1
 var lean_speed: float = 0.05
 
 func _on_hit():
@@ -189,11 +189,12 @@ func manage_movement():
 	if is_on_floor():
 		velocity.x = lerp(velocity.x, direction.x * BASE_SPEED * internal_speed_changer * speed_changer * ads_multiplier, xlr8)
 		velocity.z = lerp(velocity.z, direction.z * BASE_SPEED * internal_speed_changer * speed_changer * ads_multiplier, xlr8)
-		var target_tilt = -input_dir.x * lean_amount
-		camera_pivot.rotation.z = lerp(camera_pivot.rotation.z, target_tilt, lean_speed)
 	else:
 		velocity.x = direction.x * BASE_SPEED * speed_changer
 		velocity.z = direction.z * BASE_SPEED * speed_changer
+	
+	var target_tilt = -input_dir.x * lean_amount
+	camera_pivot.rotation.z = lerp(camera_pivot.rotation.z, target_tilt, lean_speed)
 	
 	# Handle jump
 	if Input.is_action_just_pressed("jump") && is_on_floor():
