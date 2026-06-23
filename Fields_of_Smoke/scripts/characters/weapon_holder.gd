@@ -13,6 +13,7 @@ func _process(_delta: float) -> void:
 	if is_ads:
 		rotation.x = camera_p.rotation.x
 		global_rotation.y = player.global_rotation.y
+		rotation.z = lerp(rotation.z, camera_p.rotation.z, lerpy)
 	else:
 		rotation.x = lerp(rotation.x, camera_p.rotation.x, lerpy)
 		var target_rotation_y = player.global_rotation.y
