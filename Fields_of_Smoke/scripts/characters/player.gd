@@ -56,7 +56,7 @@ var horizontal_speed: float = 0.0
 var target_offset: Vector3 = Vector3.ZERO
 var moving_on_floor: bool = false
 var bob_phase: float = 0.0
-var lean_amount: float = 0.03
+var lean_amount: float = 0.02
 var lean_speed: float = 0.05
 
 func _on_hit():
