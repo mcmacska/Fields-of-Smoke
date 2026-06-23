@@ -19,7 +19,7 @@ func _ready() -> void:
 	return_speed = 10.0
 	# position
 	hip_position = Vector3(0.2, 0.37, -0.25)
-	ads_position = Vector3(0, 0.482, -0.07)
+	ads_position = Vector3(0, 0.482, -0.12)
 
 
 func trigger_pressed(camera_transform: Transform3D):
