@@ -140,7 +140,7 @@ func weapon_shooting():
 		weapon.reload()
 	else:
 		pass
-		weapon.shoot(muzzle.global_transform)
+		weapon.primary_action(muzzle.global_transform)
 
 func rotate_towards(dir: Vector3, delta: float) -> void:
 	var target_basis = Basis.looking_at(dir, Vector3.UP)

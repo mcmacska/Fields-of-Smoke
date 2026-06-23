@@ -46,7 +46,7 @@ func trigger_pressed(camera_transform: Transform3D):
 	pass
 
 
-func shoot(camera_transform: Transform3D):
+func primary_action(camera_transform: Transform3D):
 	if not can_shoot:
 		return
 	can_shoot = false
