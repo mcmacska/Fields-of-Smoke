@@ -1,10 +1,13 @@
 extends BaseGrenade
 
 
-## Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#gravity_scale = 1.0
-	#linear_damp = 0.0
-	#
-	#if velocity != Vector3.ZERO:
-		#look_at(global_position + velocity, Vector3.UP)
+func _init():
+	item_slot = 3
+	throw_force = 10
+	
+	
+func primary_action(camera_transform: Transform3D):
+	var g = throwable_scene.instantiate()
+	get_tree().current_scene.add_child(g)
+	g.global_position = camera_transform.origin - camera_transform.basis.z * 0.5
+	g.linear_velocity = -camera_transform.basis.z * throw_force

@@ -76,11 +76,10 @@ func _ready():
 	# add starter weapons
 	add_weapon(preload("res://scenes/weapons/weapon.tscn"))
 	add_weapon(preload("res://scenes/weapons/smg62.tscn"))
+	add_weapon(preload("res://scenes/weapons/smoke_grenade.tscn"))
 	equip_weapon(0)
 	# set camera origin
 	camera_origin = camera.position
-	# set weapon position
-	current_weapon.position = current_weapon.hip_position
 
 
 func _input(event):
@@ -107,15 +106,14 @@ func _process(delta):
 	if Input.is_action_just_released("shoot"):
 		current_weapon.trigger_released(camera.global_transform)
 	# aim down sight
-	var target = current_weapon.hip_position
 	if Input.is_action_just_pressed("ADS"):
 		ads = true
-		current_weapon.is_ads = ads
+		current_weapon.secondary_action(ads)
 		weapon_holder.is_ads = ads
 		aim_changed.emit(ads)
 	if Input.is_action_just_released("ADS"):
 		ads = false
-		current_weapon.is_ads = ads
+		current_weapon.secondary_action(ads)
 		weapon_holder.is_ads = ads
 		aim_changed.emit(ads)
 	# switch last item in inventory
@@ -229,7 +227,7 @@ func equip_weapon(index: int):
 	if current_weapon:
 		current_weapon.cancel_reload()
 		current_weapon.hide()
-		current_weapon.is_ads = false
+		current_weapon.secondary_action(false)
 		aim_changed.emit(false)
 	# Spawn new weapon
 	current_weapon = new_weapon
@@ -253,29 +251,6 @@ func _on_weapon_ammo_changed(current_, max_):
 func sync_ammo():
 	if current_weapon:
 		ammo_changed.emit(current_weapon.current_ammo, current_weapon.full_ammo)
-
-
-#func aim_down_sights(delta):
-	#if !current_weapon:
-		#return;
-		#
-	#print("weapon.position:", current_weapon.position)
-	#print("weapon.global_position:", current_weapon.global_position)
-	#current_weapon.position = current_weapon.position.lerp(
-		#current_weapon.ads_position,
-		#delta * 10.0
-	#)
-	#
-	#
-#func aim_hip(delta):
-	#if !current_weapon:
-		#return;
-		#
-	##var target_position: Vector3 = current_weapon.hip_position
-	#current_weapon.position = current_weapon.position.lerp(
-		#current_weapon.hip_position,
-		#delta * 10.0
-	#)
 
 
 func add_movement_effects(delta: float):

@@ -10,7 +10,7 @@ class_name BaseWeapon
 
 #var projectile_scene = preload("res://scenes/weapons/projectile3d.tscn")
 
-@export var fire_rate: float = 0.8
+#@export var fire_rate: float = 0.8
 @export var reload_speed: float = 2.0
 
 @export var current_ammo: int = 10
@@ -32,12 +32,12 @@ var recoil_z: float = 0.0
 
 @export var push_strength: float = 0.01
 
-signal ammo_changed(current_ammo, full_ammo)
-
-var can_shoot: bool = true
+#signal ammo_changed(current_ammo, full_ammo)
+#
+#var can_shoot: bool = true
 var is_reloading: bool = false
 
-var wielder
+#var wielder
 
 # position
 var is_ads: bool = false
@@ -48,7 +48,7 @@ var camera_transform: Transform3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	position = hip_position
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,17 +63,6 @@ func _process(delta: float) -> void:
 	var base_pos = position.lerp(target, 1.0 - exp(-32.0 * delta))
 	recoil_z = lerp(recoil_z, -recoil_offset, recoil_speed * delta)
 	position = base_pos + Vector3(0, 0, recoil_z)
-	
-
-# each weapon implements the functions
-func trigger_pressed(camera_transform: Transform3D):
-	pass
-
-func trigger_held(camera_transform: Transform3D):
-	pass
-
-func trigger_released(camera_transform: Transform3D):
-	pass
 
 
 func primary_action(camera_transform: Transform3D):
@@ -97,6 +86,10 @@ func primary_action(camera_transform: Transform3D):
 	# cooldown
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
+
+
+func secondary_action(ads: bool):
+	is_ads = ads
 
 	
 func create_ray(camera_transform: Transform3D, shooter: CharacterBody3D):
@@ -124,7 +117,6 @@ func create_ray(camera_transform: Transform3D, shooter: CharacterBody3D):
 		
 func apply_damage(body: Node3D, shooter: CharacterBody3D):
 	print("Detected:", body.name)
-	
 	var is_player = false
 	if body.is_in_group("friends") and shooter.is_in_group("friends"):
 		return
