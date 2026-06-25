@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://30pv3kipggeb" path="res://scripts/ui/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://hvytjqssewc8" path="res://assets/ui/bloodscreen.png" id="2_0dwhk"]
 [ext_resource type="Texture2D" uid="uid://dh7x02el7y2c1" path="res://assets/ui/crosshair.png" id="2_x4jx1"]
-[ext_resource type="Script" uid="uid://t46x5s5twlgd" path="res://scripts/ui/blood_screen.gd" id="3_g5kmx"]
+[ext_resource type="Script" path="res://scripts/ui/blood_screen.gd" id="3_g5kmx"]
 [ext_resource type="Script" uid="uid://diu3xbdxco336" path="res://scripts/ui/hit_hair.gd" id="5_pfayw"]
 [ext_resource type="AudioStream" uid="uid://dwtxao03fsmns" path="res://assets/ui/hurt.mp3" id="6_pfayw"]
 

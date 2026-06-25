@@ -10,11 +10,7 @@ class_name BaseWeapon
 
 #var projectile_scene = preload("res://scenes/weapons/projectile3d.tscn")
 
-#@export var fire_rate: float = 0.8
-@export var reload_speed: float = 2.0
-
 @export var current_ammo: int = 10
-@export var clip_max_ammo: int = 10
 @export var full_ammo: int = 100
 
 # effects
@@ -32,12 +28,6 @@ var recoil_z: float = 0.0
 
 @export var push_strength: float = 0.01
 
-#signal ammo_changed(current_ammo, full_ammo)
-#
-#var can_shoot: bool = true
-var is_reloading: bool = false
-
-#var wielder
 
 # position
 var is_ads: bool = false

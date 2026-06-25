@@ -25,6 +25,11 @@ background_mode = 2
 sky = SubResource("Sky_o6v7o")
 tonemap_mode = 2
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_length = 16.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_q7ch5"]
 
 [node name="Main" type="Node3D" unique_id=617117156]
 process_mode = 3
@@ -163,3 +168,9 @@ mass = 100.0
 
 [node name="Medkit" parent="." unique_id=531398056 instance=ExtResource("13_q7ch5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.432426, 1.0802075, 65.91097)
+
+[node name="FogVolume" type="FogVolume" parent="." unique_id=621036153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7192726, 2.4045205, 27.468872)
+size = Vector3(10.775757, 3.3896484, 7.9726563)
+shape = 0
+material = SubResource("FogMaterial_q7ch5")
