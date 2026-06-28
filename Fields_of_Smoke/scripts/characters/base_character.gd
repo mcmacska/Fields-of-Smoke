@@ -51,7 +51,7 @@ func _on_died():
 	body.global_transform = global_transform
 	#body.linear_velocity = velocity
 	get_parent().add_child(body)
-	body.apply_central_impulse(push_direction.normalized() * push_strength)
+	body.hitbone(push_direction.normalized() * push_strength)
 	queue_free()
 
 

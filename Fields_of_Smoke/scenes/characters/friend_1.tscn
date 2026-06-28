@@ -29,7 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27998573, 0.23137525, 0)
 [node name="Muzzle" type="Node3D" parent="." unique_id=2073667034]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Body" parent="." unique_id=1436763852 instance=ExtResource("4_g3s2x")]
+[node name="Body" parent="." unique_id=1921702277 instance=ExtResource("4_g3s2x")]
 
 [node name="Area2D" type="Area3D" parent="." unique_id=1823080115 groups=["friends"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -30.644127)

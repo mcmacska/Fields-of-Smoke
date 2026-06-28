@@ -26,7 +26,7 @@ const muzzle_flash_time: float = 0.05
 var recoil_offset: float = 0.0
 var recoil_z: float = 0.0
 
-@export var push_strength: float = 0.01
+@export var push_strength: float = -1.0
 
 
 # position
@@ -146,8 +146,10 @@ func reload():
 		can_shoot = true
 		return  # cancelled
 	# decrease full ammo
-	full_ammo = full_ammo - (clip_max_ammo - current_ammo)
-	current_ammo = clip_max_ammo
+	var ammo_needed = clip_max_ammo - current_ammo
+	var ammo_to_load = min(ammo_needed, full_ammo)
+	current_ammo += ammo_to_load
+	full_ammo -= ammo_to_load
 	ammo_changed.emit(current_ammo, full_ammo)
 	can_shoot = true
 	is_reloading = false
