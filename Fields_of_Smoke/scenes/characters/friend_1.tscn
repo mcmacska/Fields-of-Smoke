@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c8hc4y4nw5rsk" path="res://scenes/weapons/weapon.tscn" id="3_6kgx2"]
 [ext_resource type="PackedScene" uid="uid://c76ajd1c1cp14" path="res://assets/characters/friend.glb" id="4_g3s2x"]
 [ext_resource type="Script" uid="uid://bh3mdhmqctxa0" path="res://scripts/characters/friend_1.gd" id="5_h8hv3"]
+[ext_resource type="PackedScene" uid="uid://by6kg7dumhy33" path="res://scenes/ui/FriendMarker.tscn" id="5_r7v4c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n06jw"]
 radius = 0.25585938
@@ -38,6 +39,9 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area2D" unique_id=2121553163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.531502, 0, -5.0405794e-07)
 shape = SubResource("SphereShape3D_n06jw")
+
+[node name="FriendMarker" parent="." unique_id=214582315 instance=ExtResource("5_r7v4c")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.2, 0)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_3d_body_exited"]

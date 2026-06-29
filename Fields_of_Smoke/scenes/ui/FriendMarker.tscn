@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://by6kg7dumhy33"]
+
+[ext_resource type="Script" uid="uid://daon4hbe4wanj" path="res://scripts/ui/friend_marker.gd" id="1_qf17a"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_qf17a"]
+size = Vector3(0.5, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_772pt"]
+depth_draw_mode = 1
+no_depth_test = true
+albedo_color = Color(0.25, 1, 0.5500001, 1)
+
+[sub_resource type="Animation" id="Animation_qf17a"]
+resource_name = "Death"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarkerBofy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarkerBofy:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.1415927, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarkerBofy:surface_material_override/0:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.25, 1, 0.5500001, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_772pt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarkerBofy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarkerBofy:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.1415927, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarkerBofy:surface_material_override/0:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.25, 1, 0.5500001, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_buw54"]
+resource_name = "Spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarkerBofy:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.25, 1, 0.5500001, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarkerBofy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 1),
+"transitions": PackedFloat32Array(0.32987696, 1, 1.0717735, 1),
+"update": 0,
+"values": [Vector3(0, 5, 0), Vector3(0, 0.5, 0), Vector3(0, 1, 0), Vector3(0, 0.5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarkerBofy:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(3.1415927, 0, 0), Vector3(3.1415927, 6.2831855, 0), Vector3(3.1415927, 3.1415927, 0), Vector3(3.1415927, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m2xy7"]
+resource_name = "Spin"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarkerBofy:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1.5691681, 0.43527555, 1.0717735),
+"update": 0,
+"values": [Vector3(3.1415927, 0, 0), Vector3(3.1415927, 6.2831855, 0), Vector3(3.1415927, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarkerBofy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.68, 1.6817931, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 1, 0), Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yrai1"]
+_data = {
+&"Death": SubResource("Animation_qf17a"),
+&"RESET": SubResource("Animation_772pt"),
+&"Spawn": SubResource("Animation_buw54"),
+&"Spin": SubResource("Animation_m2xy7")
+}
+
+[node name="FriendMarker" type="Node3D" unique_id=214582315 node_paths=PackedStringArray("animp", "marker")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_qf17a")
+animp = NodePath("AnimationPlayer")
+marker = NodePath("MarkerBofy")
+
+[node name="MarkerBofy" type="MeshInstance3D" parent="." unique_id=925312780]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0.5, 0)
+mesh = SubResource("PrismMesh_qf17a")
+surface_material_override/0 = SubResource("StandardMaterial3D_772pt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1516328872]
+libraries/ = SubResource("AnimationLibrary_yrai1")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
