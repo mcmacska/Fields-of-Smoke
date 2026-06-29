@@ -167,6 +167,7 @@ _data = {
 
 [node name="FriendMarker" type="Node3D" unique_id=214582315 node_paths=PackedStringArray("animp", "marker")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+top_level = true
 script = ExtResource("1_qf17a")
 animp = NodePath("AnimationPlayer")
 marker = NodePath("MarkerBofy")

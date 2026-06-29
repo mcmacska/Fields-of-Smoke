@@ -10,6 +10,8 @@
 radius = 0.25341797
 height = 1.7897949
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_6eyoc"]
+
 [node name="Player" type="CharacterBody3D" unique_id=1976144270 groups=["friends", "player"]]
 collision_mask = 7
 script = ExtResource("1_vsclp")
@@ -36,3 +38,12 @@ top_level = true
 script = ExtResource("5_atpat")
 camera_p = NodePath("../CameraPivot")
 player = NodePath("..")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1194040110]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1439418923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44884717, -0.81199276)
+shape = SubResource("SphereShape3D_6eyoc")
+
+[connection signal="body_entered" from="Area3D" to="WeaponHolder" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="WeaponHolder" method="_on_area_3d_body_exited"]
