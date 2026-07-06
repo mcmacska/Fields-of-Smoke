@@ -13,6 +13,9 @@ height = 1.8049316
 [sub_resource type="SphereShape3D" id="SphereShape3D_n06jw"]
 radius = 19.940147
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_h8hv3"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Character" type="CharacterBody3D" unique_id=1336977627 groups=["friends"]]
 collision_mask = 7
 script = ExtResource("5_h8hv3")
@@ -40,8 +43,9 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.531502, 0, -5.0405794e-07)
 shape = SubResource("SphereShape3D_n06jw")
 
-[node name="FriendMarker" parent="." unique_id=214582315 instance=ExtResource("5_r7v4c")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.2, 0)
+[node name="FriendMarker" parent="." unique_id=1319477072 instance=ExtResource("5_r7v4c")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 1.1300535, 0)
+texture = SubResource("ViewportTexture_h8hv3")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_3d_body_exited"]

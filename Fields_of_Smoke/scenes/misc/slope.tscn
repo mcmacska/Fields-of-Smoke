@@ -5,6 +5,7 @@
 [node name="Slope" type="RigidBody3D" unique_id=1335287202]
 collision_layer = 4
 collision_mask = 7
+lock_rotation = true
 
 [node name="Face2" type="MeshInstance3D" parent="." unique_id=2145502266]
 transform = Transform3D(20, 0, 0, 0, 10, 0, 0, 0, 5, 0, 5.0292096, 0)
