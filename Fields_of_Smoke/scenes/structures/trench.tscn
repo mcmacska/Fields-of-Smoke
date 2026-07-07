@@ -1,16 +1,33 @@
 [gd_scene format=3 uid="uid://18sfoyps2i4b"]
 
-[ext_resource type="PackedScene" uid="uid://bkvro2o25fvsd" path="res://assets/structures/trench_2.glb" id="1_7d4wa"]
-[ext_resource type="PackedScene" uid="uid://dlxfysg3nvy8t" path="res://scenes/misc/crate.tscn" id="2_7d4wa"]
+[ext_resource type="PackedScene" uid="uid://cdfjrfipndoq1" path="res://assets/structures/bunker.glb" id="1_3pf4t"]
+[ext_resource type="PackedScene" uid="uid://cs0bg00kamhhu" path="res://assets/structures/map_1.glb" id="1_ff322"]
+[ext_resource type="PackedScene" uid="uid://d0q05auuto2ra" path="res://scenes/structures/concrete_cover.tscn" id="2_7d4wa"]
 
 [node name="Trench" type="StaticBody3D" unique_id=1418688407]
 collision_layer = 4
 collision_mask = 3
 
-[node name="trench_2" parent="." unique_id=1307908230 instance=ExtResource("1_7d4wa")]
+[node name="bunker2" parent="." unique_id=157336533 instance=ExtResource("1_3pf4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.546772, 0, 17.62061)
 
-[node name="Crate" parent="." unique_id=1335287202 instance=ExtResource("2_7d4wa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.411543, 60.45636)
+[node name="map_1" parent="." unique_id=376747096 instance=ExtResource("1_ff322")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9414177, -0.16061783, 4.1008453)
 
-[node name="Crate2" parent="." unique_id=1817253024 instance=ExtResource("2_7d4wa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9056292, -0.41154313, 60.460587)
+[node name="ConcreteCover" parent="." unique_id=964485387 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.492096, -0.09199718, 0)
+
+[node name="ConcreteCover2" parent="." unique_id=351713767 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.329075, -0.09199718, 0)
+
+[node name="ConcreteCover3" parent="." unique_id=1308929555 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.120499, -0.09199718, 0)
+
+[node name="ConcreteCover4" parent="." unique_id=757271307 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.804476, -0.09199718, 0)
+
+[node name="ConcreteCover5" parent="." unique_id=1262180542 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.407623, -0.09199718, 0)
+
+[node name="ConcreteCover6" parent="." unique_id=1592726190 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.78811, -0.09199718, 0)
