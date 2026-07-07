@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://dmh0xdhi3qwgo"]
+
+[ext_resource type="Script" uid="uid://pa8i5uf4xw34" path="res://scripts/characters/player.gd" id="1_vsclp"]
+[ext_resource type="Script" uid="uid://duxj8fb6a54by" path="res://scripts/Health.gd" id="3_ifusu"]
+[ext_resource type="Script" uid="uid://bx2c1htcswki1" path="res://scenes/characters/camera.gd" id="4_bs8hp"]
+[ext_resource type="PackedScene" uid="uid://lb622yjiln5v" path="res://scenes/characters/player_mesh.tscn" id="4_ifusu"]
+[ext_resource type="Script" uid="uid://cykjvjlwdyeij" path="res://scripts/characters/weapon_holder.gd" id="5_atpat"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vsclp"]
+radius = 0.25341797
+height = 1.7897949
+
+[sub_resource type="Animation" id="Animation_atpat"]
+resource_name = "Down"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.1816616, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kqtwu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6eyoc"]
+resource_name = "Up"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eojnx"]
+_data = {
+&"Down": SubResource("Animation_atpat"),
+&"RESET": SubResource("Animation_kqtwu"),
+&"Up": SubResource("Animation_6eyoc")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_atpat"]
+animation = &"Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kqtwu"]
+animation = &"Up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6eyoc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eojnx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qgnko"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7vyk4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2l4js"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jk2m4"]
+states/Down/node = SubResource("AnimationNodeAnimation_atpat")
+states/Down/position = Vector2(386.80002, 41.6)
+states/Up/node = SubResource("AnimationNodeAnimation_kqtwu")
+states/Up/position = Vector2(387.44, 144.48001)
+transitions = ["Start", "Down", SubResource("AnimationNodeStateMachineTransition_6eyoc"), "Down", "Up", SubResource("AnimationNodeStateMachineTransition_eojnx"), "Up", "Down", SubResource("AnimationNodeStateMachineTransition_qgnko"), "Down", "End", SubResource("AnimationNodeStateMachineTransition_7vyk4"), "Up", "End", SubResource("AnimationNodeStateMachineTransition_2l4js")]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_atpat"]
+radius = 0.2
+
+[node name="Player" type="CharacterBody3D" unique_id=1976144270 groups=["friends", "player"]]
+collision_mask = 7
+script = ExtResource("1_vsclp")
+
+[node name="Hitbox" type="CollisionShape3D" parent="." unique_id=461950506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0057373047, 0)
+shape = SubResource("CapsuleShape3D_vsclp")
+
+[node name="Health" type="Node" parent="." unique_id=627811805]
+script = ExtResource("3_ifusu")
+
+[node name="Body" parent="." unique_id=568535268 instance=ExtResource("4_ifusu")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1972547943]
+
+[node name="Camera" type="Camera3D" parent="CameraPivot" unique_id=1745129787 groups=["friends"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5690636, -0.0018848777)
+cull_mask = 1048567
+script = ExtResource("4_bs8hp")
+
+[node name="WeaponHolder" type="Node3D" parent="." unique_id=929256609 node_paths=PackedStringArray("camera_p", "player") groups=["friends"]]
+top_level = true
+script = ExtResource("5_atpat")
+camera_p = NodePath("../CameraPivot")
+player = NodePath("..")
+is_ads = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WeaponHolder" unique_id=552827905]
+libraries/ = SubResource("AnimationLibrary_eojnx")
+
+[node name="AnimationTree" type="AnimationTree" parent="WeaponHolder" unique_id=1745868394]
+tree_root = SubResource("AnimationNodeStateMachine_jk2m4")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Area3D" type="Area3D" parent="WeaponHolder" unique_id=1701488621]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WeaponHolder/Area3D" unique_id=188513168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34733182, -0.48198122)
+shape = SubResource("SphereShape3D_atpat")
+
+[connection signal="body_entered" from="WeaponHolder/Area3D" to="WeaponHolder" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="WeaponHolder/Area3D" to="WeaponHolder" method="_on_area_3d_body_exited"]

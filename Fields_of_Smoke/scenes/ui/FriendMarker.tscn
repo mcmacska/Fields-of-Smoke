@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://by6kg7dumhy33"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_enq32"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_enq32"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.7331731, 0.87740386, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0.70980394, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qf17a"]
+gradient = SubResource("Gradient_enq32")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[node name="FriendMarker" type="Sprite3D" unique_id=1319477072]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_enq32")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=373311035]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="Polygon2D" type="Polygon2D" parent="SubViewport" unique_id=2000420202]
+visible = false
+position = Vector2(50, 0)
+color = Color(0.1687718, 0.6754979, 0.33003002, 1)
+polygon = PackedVector2Array(0, 0, 50, 150, 100, 0)
+uv = PackedVector2Array(0, 0, 50, 200, 100, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=675677125]
+self_modulate = Color(0.2369062, 0.81465113, 0.42065787, 1)
+texture = SubResource("GradientTexture2D_qf17a")
+offset = Vector2(128, 128)
