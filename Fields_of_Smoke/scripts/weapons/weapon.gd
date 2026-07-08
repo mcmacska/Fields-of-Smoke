@@ -20,6 +20,7 @@ func _ready() -> void:
 	# position
 	hip_position = Vector3(0.2, 0.37, -0.25)
 	ads_position = Vector3(0, 0.482, -0.12)
+	wielder = get_parent()
 
 
 func trigger_pressed(camera_transform: Transform3D):

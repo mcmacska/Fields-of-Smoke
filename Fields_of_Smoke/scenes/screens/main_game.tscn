@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dwg7u1v6se4w6" path="res://scenes/characters/friend_1.tscn" id="11_u3okq"]
 [ext_resource type="PackedScene" uid="uid://clgwi6nuseyvn" path="res://scenes/misc/slope.tscn" id="12_pmtpm"]
 [ext_resource type="PackedScene" uid="uid://dkayvq5gc8agt" path="res://scenes/tools/medkit.tscn" id="13_q7ch5"]
+[ext_resource type="PackedScene" uid="uid://c6pey2hbuar2l" path="res://Roli/enemy_2.tscn" id="14_cs2f8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5cypo"]
 panorama = ExtResource("2_u3okq")
@@ -174,3 +175,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7192726, 2.4045205, 27.468
 size = Vector3(10.775757, 3.3896484, 7.9726563)
 shape = 0
 material = SubResource("FogMaterial_q7ch5")
+
+[node name="Character_2" parent="." unique_id=484839439 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.085167, 2.1868591, -29.628191)
