@@ -8,7 +8,7 @@ extends Interactable
 @onready var exit_marker = $ExitMarker
 @onready var bullet_origin = $YawPivot/PitchPivot/BulletOrigin
 @onready var camera_position = $YawPivot/PitchPivot/CameraPosition
-@export var sensitivity: float = 0.003
+@export var sensitivity: float = 0.002
 var just_entered = true
 
 var yaw := 0.0
@@ -16,6 +16,7 @@ var pitch := 0.0
 
 var current_user: Node = null
 var original_camera_parent: Node
+var original_camera_pivot_transform: Transform3D
 var original_weapon_index: int = 0
 
 func _ready() -> void:
@@ -77,9 +78,9 @@ func enter_mg(body: Node3D):
 	weapon.wielder = body
 	current_user = body
 	# remove camera pivot from player
+	original_camera_pivot_transform = body.camera_pivot.transform
 	original_camera_parent = body.camera_pivot.get_parent()
-	original_camera_parent.remove_child(body.camera_pivot)
-	camera_position.add_child(body.camera_pivot)
+	body.camera_pivot.reparent(camera_position)
 	body.camera_pivot.transform = Transform3D.IDENTITY
 
 
@@ -95,9 +96,8 @@ func leave_mg(body: Node3D):
 	weapon.wielder = null
 	current_user = null
 	# give camera pivot back
-	body.camera_pivot.transform = Transform3D.IDENTITY
-	camera_position.remove_child(body.camera_pivot)
-	original_camera_parent.add_child(body.camera_pivot)
+	body.camera_pivot.reparent(original_camera_parent)
+	body.camera_pivot.transform = original_camera_pivot_transform
 	# reset pivots
 	yaw_pivot.rotation.y = 0.0
 	pitch_pivot.rotation.x = 0.0
