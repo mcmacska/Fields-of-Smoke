@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://giww70gecgt5"]
+
+[ext_resource type="Script" uid="uid://c8n3x57r6spxi" path="res://scripts/weapons/machine_gun.gd" id="1_yjg27"]
+[ext_resource type="PackedScene" uid="uid://1eeivr1vor4q" path="res://scenes/misc/bullet_hole.tscn" id="2_72cfv"]
+[ext_resource type="PackedScene" uid="uid://cn1sa8k8qeq3f" path="res://assets/weapons/machine_gun.glb" id="3_ur525"]
+[ext_resource type="PackedScene" uid="uid://c7x4gkses0oq4" path="res://assets/weapons/muzzle.glb" id="4_kmiw6"]
+[ext_resource type="AudioStream" uid="uid://c4ao4yr0ir6th" path="res://assets/weapons/gunshot_mg.mp3" id="5_ur525"]
+[ext_resource type="AudioStream" uid="uid://cgcrv7mgqikr5" path="res://assets/weapons/reload_rifle.mp3" id="6_s301m"]
+
+[node name="Weapon" type="Node3D" unique_id=70947009]
+script = ExtResource("1_yjg27")
+bullet_hole_scene = ExtResource("2_72cfv")
+
+[node name="machine_gun" parent="." unique_id=1284744362 instance=ExtResource("3_ur525")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.014457464)
+
+[node name="Muzzle" type="Node3D" parent="." unique_id=1641798917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049170785, -0.40594187)
+
+[node name="MuzzleFlash" parent="Muzzle" unique_id=47607579 instance=ExtResource("4_kmiw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02420102, 0)
+visible = false
+
+[node name="Flash" type="OmniLight3D" parent="Muzzle" unique_id=1804706399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010608666, 0)
+visible = false
+light_color = Color(0.96875, 0.6322056, 0.27624512, 1)
+light_energy = 0.2
+omni_range = 0.9799919
+
+[node name="GunshotSound" type="AudioStreamPlayer3D" parent="." unique_id=817747110]
+stream = ExtResource("5_ur525")
+max_distance = 64.0
+max_polyphony = 3
+
+[node name="ReloadSound" type="AudioStreamPlayer3D" parent="." unique_id=1681175736]
+stream = ExtResource("6_s301m")
+max_distance = 20.0
+max_polyphony = 2

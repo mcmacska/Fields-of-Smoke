@@ -17,6 +17,7 @@ var recoil_yaw_target := 0.0
 
 const AIR_ACCEL: float = 0.8
 
+var can_move: bool = true
 var is_running: bool = false
 #totally not a ben10 reference
 const xlr8: float = 0.2
@@ -46,6 +47,8 @@ var ads: bool = false
 signal ammo_changed(current, max)
 signal aim_changed(is_ads)
 signal hit()
+
+var current_interactable: Interactable
 
 # camera movement effects
 const BOB_FREQ: float = 1.5
@@ -98,6 +101,11 @@ func _input(event):
 func _process(delta):
 	if get_tree().paused:
 		return
+	# handle interactable
+	if Input.is_action_just_pressed("use") && current_interactable != null:
+		current_interactable.interact(self)
+	if !can_move:
+		return
 	# handle shooting
 	if Input.is_action_pressed("shoot"):
 		current_weapon.trigger_held(camera.global_transform)
@@ -137,7 +145,7 @@ func _process(delta):
 
 
 func _physics_process(delta: float) -> void:
-	if get_tree().paused:
+	if !can_move || get_tree().paused:
 		return
 	manage_gravity(delta)
 	manage_movement()
@@ -236,11 +244,8 @@ func equip_weapon(index: int):
 	current_weapon.show()
 	# set wielder
 	current_weapon.wielder = self
-	# Sync
-	_on_weapon_ammo_changed(
-		current_weapon.current_ammo,
-		current_weapon.full_ammo
-	)
+	# sync
+	_on_weapon_ammo_changed(current_weapon.current_ammo, current_weapon.full_ammo)
 
 
 func _on_weapon_ammo_changed(current_, max_):
@@ -287,3 +292,13 @@ func add_recoil_effect():
 	# horizontal kick
 	recoil_yaw_target += randf_range(-recoil_horizontal, recoil_horizontal)
 	
+
+
+func _on_interaction_detector_area_entered(area: Area3D) -> void:
+	if area.owner is Interactable:
+		current_interactable = area.owner
+
+
+func _on_interaction_detector_area_exited(area: Area3D) -> void:
+	if area.owner is Interactable:
+		current_interactable = null

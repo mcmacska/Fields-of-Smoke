@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://byh5mjsom0113" path="res://scenes/misc/target.tscn" id="9_w1shy"]
 [ext_resource type="PackedScene" uid="uid://yak5xtimvwh8" path="res://scenes/areas/base.tscn" id="10_t0fsf"]
 [ext_resource type="PackedScene" uid="uid://dwg7u1v6se4w6" path="res://scenes/characters/friend_1.tscn" id="11_u3okq"]
+[ext_resource type="PackedScene" uid="uid://dcikk3cpme1yk" path="res://scenes/weapons/machine_gun_nest.tscn" id="13_cs2f8"]
 [ext_resource type="PackedScene" uid="uid://dkayvq5gc8agt" path="res://scenes/tools/medkit.tscn" id="13_q7ch5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5cypo"]
@@ -26,7 +27,6 @@ tonemap_mode = 2
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
-volumetric_fog_length = 16.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_q7ch5"]
 
@@ -165,3 +165,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7192726, 2.4045205, 27.468
 size = Vector3(10.775757, 3.3896484, 7.9726563)
 shape = 0
 material = SubResource("FogMaterial_q7ch5")
+
+[node name="Nest" parent="." unique_id=70947009 instance=ExtResource("13_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.363982, 1.670721, 54.816177)

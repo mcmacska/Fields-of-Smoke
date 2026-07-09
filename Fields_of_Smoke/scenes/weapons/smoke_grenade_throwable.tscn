@@ -7,6 +7,7 @@
 size = Vector3(0.051864624, 0.09959793, 0.05130768)
 
 [sub_resource type="FogMaterial" id="FogMaterial_q4nyr"]
+emission = Color(0.21484375, 0.21484375, 0.21484375, 1)
 
 [node name="Smoke" type="RigidBody3D" unique_id=1231177094 node_paths=PackedStringArray("fuse_timer", "smoke_timer", "smoke_cloud")]
 script = ExtResource("1_q4nyr")
