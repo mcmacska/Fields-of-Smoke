@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://be3iegchltstb"]
+
+[ext_resource type="Script" uid="uid://cqodqxfbj3mve" path="res://scripts/weapons/smoke_grenade_throwable.gd" id="1_kmhl2"]
+[ext_resource type="PackedScene" uid="uid://dle1wfbe52gfx" path="res://assets/weapons/frag_grenade.glb" id="2_kmhl2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4nyr"]
+size = Vector3(0.050930023, 0.08202553, 0.05130768)
+
+[sub_resource type="FogMaterial" id="FogMaterial_q4nyr"]
+emission = Color(0.21484375, 0.21484375, 0.21484375, 1)
+
+[node name="Frag" type="RigidBody3D" unique_id=1231177094 node_paths=PackedStringArray("fuse_timer", "smoke_timer", "smoke_cloud")]
+script = ExtResource("1_kmhl2")
+fuse_timer = NodePath("FuseTimer")
+smoke_timer = NodePath("SmokeTimer")
+smoke_cloud = NodePath("SmokeCloud")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=330216816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.43866e-05, 0.009268761, 0)
+shape = SubResource("BoxShape3D_q4nyr")
+
+[node name="frag_grenade" parent="." unique_id=1389421826 instance=ExtResource("2_kmhl2")]
+
+[node name="FuseTimer" type="Timer" parent="." unique_id=938523428]
+
+[node name="SmokeTimer" type="Timer" parent="." unique_id=619626622]
+
+[node name="SmokeCloud" type="FogVolume" parent="." unique_id=933804116]
+visible = false
+size = Vector3(16, 16, 16)
+shape = 0
+material = SubResource("FogMaterial_q4nyr")
+
+[connection signal="timeout" from="FuseTimer" to="." method="_on_fuse_timeout"]
+[connection signal="timeout" from="SmokeTimer" to="." method="_on_smoke_timer_timeout"]

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dfgnepc2ti22"]
+
+[ext_resource type="Script" uid="uid://di1h8656itdcf" path="res://scripts/main_game.gd" id="1_0fdm5"]
+[ext_resource type="Texture2D" uid="uid://cfgxdv2w3l564" path="res://assets/background/sky_1.exr" id="2_8avj2"]
+[ext_resource type="PackedScene" uid="uid://18sfoyps2i4b" path="res://scenes/structures/trench.tscn" id="3_dnoeg"]
+[ext_resource type="PackedScene" uid="uid://dmh0xdhi3qwgo" path="res://scenes/characters/player.tscn" id="4_w1orc"]
+[ext_resource type="PackedScene" uid="uid://bc3d6w0jbe7wm" path="res://scenes/ui/ui.tscn" id="7_4f1rw"]
+[ext_resource type="PackedScene" uid="uid://baxgt4igkjr72" path="res://scenes/screens/pause_menu.tscn" id="9_3wr2b"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5cypo"]
+panorama = ExtResource("2_8avj2")
+
+[sub_resource type="Sky" id="Sky_o6v7o"]
+sky_material = SubResource("PanoramaSkyMaterial_5cypo")
+
+[sub_resource type="Environment" id="Environment_wjob3"]
+background_mode = 2
+sky = SubResource("Sky_o6v7o")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[node name="Main" type="Node3D" unique_id=617117156]
+process_mode = 3
+script = ExtResource("1_0fdm5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=923018676]
+environment = SubResource("Environment_wjob3")
+
+[node name="Trench" parent="." unique_id=1418688407 instance=ExtResource("3_dnoeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17419648, 53.92138)
+
+[node name="Player" parent="." unique_id=1976144270 instance=ExtResource("4_w1orc")]
+transform = Transform3D(0.32082793, 0, -0.9471375, 0, 1, 0, 0.9471375, 0, 0.32082793, -10.306397, 1.0126235, 61.139534)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1215520732]
+
+[node name="Ui" parent="CanvasLayer" unique_id=1645371746 instance=ExtResource("7_4f1rw")]
+
+[node name="PauseMenu" parent="." unique_id=106659632 instance=ExtResource("9_3wr2b")]
+visible = false

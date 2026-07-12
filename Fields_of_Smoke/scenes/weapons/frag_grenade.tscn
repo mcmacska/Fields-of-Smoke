@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://fgb60li211o0"]
+
+[ext_resource type="Script" uid="uid://dnpnf68be1sk8" path="res://scripts/weapons/frag_grenade.gd" id="1_1cqn8"]
+[ext_resource type="PackedScene" uid="uid://dle1wfbe52gfx" path="res://assets/weapons/frag_grenade.glb" id="3_ck7mj"]
+
+[node name="Frag" type="Node3D" unique_id=475603235]
+script = ExtResource("1_1cqn8")
+
+[node name="frag_grenade" parent="." unique_id=1389421826 instance=ExtResource("3_ck7mj")]
