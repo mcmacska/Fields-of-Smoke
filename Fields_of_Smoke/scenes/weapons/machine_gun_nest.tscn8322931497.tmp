@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dcikk3cpme1yk"]
+
+[ext_resource type="Script" uid="uid://bjlf1kghn3xbi" path="res://scenes/weapons/machine_gun_nest.gd" id="1_h0vhv"]
+[ext_resource type="PackedScene" uid="uid://giww70gecgt5" path="res://scenes/weapons/machine_gun.tscn" id="3_nabwx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nabwx"]
+radius = 0.6005546
+
+[node name="Nest" type="Node3D" unique_id=70947009]
+script = ExtResource("1_h0vhv")
+
+[node name="YawPivot" type="Node3D" parent="." unique_id=1735268843]
+
+[node name="SeatMarker" type="Marker3D" parent="YawPivot" unique_id=173730936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2289713)
+
+[node name="PitchPivot" type="Node3D" parent="YawPivot" unique_id=24230562]
+
+[node name="CameraPosition" type="Marker3D" parent="YawPivot/PitchPivot" unique_id=2134022843]
+
+[node name="BulletOrigin" type="Marker3D" parent="YawPivot/PitchPivot" unique_id=148989587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118683845, -0.2947922)
+
+[node name="Weapon" parent="YawPivot/PitchPivot" unique_id=584955304 instance=ExtResource("3_nabwx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07969558, 0.10764114)
+
+[node name="ExitMarker" type="Marker3D" parent="." unique_id=1236428981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.58604366)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=926260941]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1124718502]
+shape = SubResource("SphereShape3D_nabwx")

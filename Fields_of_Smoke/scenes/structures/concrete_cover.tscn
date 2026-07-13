@@ -1,0 +1,139 @@
+[gd_scene format=4 uid="uid://d0q05auuto2ra"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxmgx"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.6202517, 0.6202517, 0.6202517, 1)
+roughness = 0.7461539
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e01q2"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABQACAAEAAwAGAAUABAACAAcABgAEAAcABQAHAAIABgAHAAUA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD//wAA//8AAP////8AAAAA//8AAAAAAAD///////8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sov36"]
+resource_name = "concrete_cover_Cube_002"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP+f/3//3/8//9//f/+f/z8="),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEA"),
+"material": SubResource("StandardMaterial3D_pxmgx"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///7//////AAD//wAA////////AAD//wAA/////////////1TVVNVU1VTVVNVU1VTVVNX/v/+//7//v/+//7//v/+/qiqqKqoqqiqqKqoqqiqqKv//////////////////////f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_e01q2")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kaxmc"]
+_surfaces = [{
+"aabb": AABB(-0.9732787, -0.9919695, 1.4920132, 1.9465574, 1.8210149, 2.0000002),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwABAAAABAAAAAIAAwAAAAUABAAFAAAAAwAFAAQA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAD/////AAAAAKcA//8AAOMCAAAAAAAA//+nAP//AAAb/QAAAAAAAP///////wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2uca1"]
+resource_name = "concrete_cover_Cube_006"
+_surfaces = [{
+"aabb": AABB(-0.9732787, -0.9919695, 1.4920132, 1.9465574, 1.8210149, 2.0000002),
+"attribute_data": PackedByteArray("/9//P/9fAAD/3/9//1//P/+f/z//n/9//1//P/+fAAD/n/8//18AAP+f/3//3/8//9//f/+f/z8="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgABgAJAAcACgALAAwACgANAAsA"),
+"material": SubResource("StandardMaterial3D_pxmgx"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("AAD/////+jQAAKcA///6NOMCAAAAAPo0//+nAP//ltX///////+W1Rv9AAAAAJbV//+nAP///78AAP//////v/////////+/AACnAP///78b/QAAAAD//wAA////////4wIAAAAA/////////////y3FN90txTfdLcU33dIq0irSKtIq0irSKv//////////////////////f8TY/3/E2P9/xNj/f8TY")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kaxmc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cu208"]
+resource_name = "Wood"
+cull_mode = 2
+albedo_color = Color(0.38008785, 0.22933522, 0.09772906, 1)
+roughness = 0.6330275
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yh6b2"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEABQAAAAIABAAGAAIABQACAAYABwAGAAQABwAFAAYA"),
+"name": "Wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nsk65"]
+resource_name = "concrete_cover_Cube_007"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/3//n/8//5//f/9f/z//X/8//58AAP+f/z//XwAA/5//f//f/z//3/9//5//Pw=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": SubResource("StandardMaterial3D_cu208"),
+"name": "Wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNX//wAAAABU1f///////1TV/////wAAVNX//wAA//9U1f//AAD///+/AAD//////7//////////vwAAAAD///+//////wAA//8AAP///////wAA//8AAP////////////9U1VTVVNVU1VTVVNVU1VTVqiqqKqoqqiqqKqoqqiqqKv//////////////////////f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yh6b2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1lhjv"]
+size = Vector3(29.988281, 0.3913908, 1.9934044)
+
+[node name="ConcreteCover" type="StaticBody3D" unique_id=1056110908]
+
+[node name="concrete_block" type="MeshInstance3D" parent="." unique_id=1088591231]
+transform = Transform3D(15, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0.76845753, 0)
+mesh = SubResource("ArrayMesh_sov36")
+
+[node name="dirt_pile" type="MeshInstance3D" parent="." unique_id=287897699]
+transform = Transform3D(15.411824, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0.76845753, -4.4617634)
+mesh = SubResource("ArrayMesh_2uca1")
+
+[node name="plank" type="MeshInstance3D" parent="." unique_id=1643781026]
+transform = Transform3D(15, 0, 0, 0, 0.19895408, 0, 0, 0, 1, 0, 0.16590063, 1.9998653)
+mesh = SubResource("ArrayMesh_nsk65")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=103473778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015625, 0.7690804, -4.5776367e-05)
+shape = SubResource("BoxShape3D_1lhjv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1146591556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015625, 0.16809916, 1.9982176)
+shape = SubResource("BoxShape3D_1lhjv")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="." unique_id=2139309080]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.03653717, 0.42754292, 0)
+depth = 30.0
+polygon = PackedVector2Array(0.99124575, 1.1264539, 1.008935, -0.443398, 2.9306502, -0.46914363)

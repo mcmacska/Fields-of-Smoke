@@ -4,7 +4,7 @@ class_name BaseCharacter
 
 @export var attack_range := 500
 @export var dead_scene: Resource
-@export var speed: float = 10.0
+@export var speed: float = 8.0
 @export var patrol_points: Array[Node] = []
 @export var friends_group_name: String = ""
 @export var enemies_group_name: String = ""
