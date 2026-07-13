@@ -38,7 +38,8 @@ var is_dead = false
 signal died()
 
 # weapon management
-var inventory: Array = [null, null, null, null]
+#var inventory: Array = [null, null, null, null]
+var inventory: Dictionary = {}
 var current_weapon_index := 0
 var last_weapon_index := 0
 var current_weapon: Node = null
@@ -216,8 +217,9 @@ func add_weapon(weapon_scene: PackedScene):
 	var weapon = weapon_scene.instantiate()
 	var slot = weapon.item_slot
 	print("slot: ", slot)
-	if inventory[slot] != null:
-		inventory[slot].queue_free()
+	var item = inventory.get(slot)
+	if item != null:
+		item.queue_free()
 	inventory[slot] = weapon
 	weapon.hide()  # don't show yet
 	weapon_holder.add_child(weapon)
@@ -225,10 +227,11 @@ func add_weapon(weapon_scene: PackedScene):
 	weapon.ammo_changed.connect(_on_weapon_ammo_changed)
 
 
+# todo: handle item slot
 func equip_weapon(index: int):
 	print("current_weapon_index: ", current_weapon_index)
 	print("last_weapon_index: ", last_weapon_index)
-	var new_weapon = inventory[index]
+	var new_weapon = inventory.get(index)
 	if !new_weapon:
 		return
 
