@@ -13,7 +13,7 @@ func _process(_delta):
 		return
 
 func _physics_process(delta: float) -> void:
-	if is_dead:
+	if is_dead || get_tree().paused:
 		return
 	
 	# Add the gravity

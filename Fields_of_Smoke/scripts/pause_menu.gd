@@ -7,6 +7,7 @@ func _ready():
 func _on_resume_pressed() -> void:
 	get_tree().paused = false
 	visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _on_exit_to_main_menu_pressed() -> void:

@@ -9,6 +9,7 @@ extends Interactable
 @onready var bullet_origin = $YawPivot/PitchPivot/BulletOrigin
 @onready var camera_position = $YawPivot/PitchPivot/CameraPosition
 @export var sensitivity: float = 0.002
+@export var timer: Timer
 var just_entered = true
 
 var yaw := 0.0
@@ -65,7 +66,11 @@ func interact(body: Node3D):
 
 func enter_mg(body: Node3D):
 	body.can_move = false
-	body.global_position = seat_marker.global_position
+	body.velocity = Vector3.ZERO
+	just_entered=true
+	
+	yaw = yaw_pivot.rotation.y
+	pitch = pitch_pivot.rotation.x
 	body.weapon_holder.visible = false
 	# emulate ads
 	body.aim_changed.emit(true)
@@ -77,15 +82,20 @@ func enter_mg(body: Node3D):
 	# set user
 	weapon.wielder = body
 	current_user = body
+	
+	body.camera.position = body.camera_origin
+	body.camera_pivot.rotation.z = 0.0
+	
+	await get_tree().physics_frame
+	body.global_position = seat_marker.global_position
 	# remove camera pivot from player
 	original_camera_pivot_transform = body.camera_pivot.transform
 	original_camera_parent = body.camera_pivot.get_parent()
-	body.camera_pivot.reparent(camera_position)
+	body.camera_pivot.reparent(camera_position, false)
 	body.camera_pivot.transform = Transform3D.IDENTITY
 
 
 func leave_mg(body: Node3D):
-	body.can_move = true
 	body.global_position = exit_marker.global_position
 	body.weapon_holder.visible = true
 	# revert ads
@@ -95,8 +105,10 @@ func leave_mg(body: Node3D):
 	# clean up
 	weapon.wielder = null
 	current_user = null
+	
+	await get_tree().physics_frame
 	# give camera pivot back
-	body.camera_pivot.reparent(original_camera_parent)
+	body.camera_pivot.reparent(original_camera_parent, false)
 	body.camera_pivot.transform = original_camera_pivot_transform
 	# reset pivots
 	yaw_pivot.rotation.y = 0.0
@@ -105,7 +117,7 @@ func leave_mg(body: Node3D):
 	pitch = 0.0
 	body.yaw = body.rotation.y
 	body.pitch = body.camera_pivot.rotation.x
+	body.can_move = true
 	# equip last used weapon
 	body.equip_weapon(original_weapon_index)
-	
 	

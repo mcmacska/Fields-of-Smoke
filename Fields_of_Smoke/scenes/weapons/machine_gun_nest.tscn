@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dcikk3cpme1yk"]
+[gd_scene format=3 uid="uid://gxfbody2xap"]
 
 [ext_resource type="Script" uid="uid://bjlf1kghn3xbi" path="res://scenes/weapons/machine_gun_nest.gd" id="1_h0vhv"]
 [ext_resource type="PackedScene" uid="uid://giww70gecgt5" path="res://scenes/weapons/machine_gun.tscn" id="3_nabwx"]
@@ -6,8 +6,9 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_nabwx"]
 radius = 0.6005546
 
-[node name="Nest" type="Node3D" unique_id=70947009]
+[node name="Nest" type="Node3D" unique_id=70947009 node_paths=PackedStringArray("timer")]
 script = ExtResource("1_h0vhv")
+timer = NodePath("")
 
 [node name="YawPivot" type="Node3D" parent="." unique_id=1735268843]
 
