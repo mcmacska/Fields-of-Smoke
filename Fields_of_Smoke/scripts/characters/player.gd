@@ -81,7 +81,9 @@ func _ready():
 	add_weapon(preload("res://scenes/weapons/weapon.tscn"))
 	add_weapon(preload("res://scenes/weapons/smg62.tscn"))
 	add_weapon(preload("res://scenes/weapons/smoke_grenade.tscn"))
-	equip_weapon(0)
+	add_weapon(preload("res://scenes/weapons/frag_grenade.tscn"))
+	current_weapon_index = 1
+	equip_weapon(current_weapon_index)
 	# set camera origin
 	camera_origin = camera.position
 
@@ -91,11 +93,14 @@ func _input(event):
 		return
 	if event is InputEventMouseMotion:
 		manage_direction(event)
+	# TODO: manage item slots better
 	elif event.is_action_pressed("scroll_up"):
-		var next = (current_weapon_index + 1) % inventory.size()
+		current_weapon_index += 1
+		var next = (current_weapon_index) % inventory.size()
 		equip_weapon(next)
 	elif event.is_action_pressed("scroll_down"):
-		var prev = (current_weapon_index - 1 + inventory.size()) % inventory.size()
+		current_weapon_index -= 1
+		var prev = (current_weapon_index + inventory.size()) % inventory.size()
 		equip_weapon(prev)
 
 
@@ -227,7 +232,6 @@ func add_weapon(weapon_scene: PackedScene):
 	weapon.ammo_changed.connect(_on_weapon_ammo_changed)
 
 
-# todo: handle item slot
 func equip_weapon(index: int):
 	print("current_weapon_index: ", current_weapon_index)
 	print("last_weapon_index: ", last_weapon_index)

@@ -10,9 +10,8 @@ var full_ammo: int = 2
 # weapon type
 @export var weapon_slot: int = 0
 
-# bullet stats
-@export var damage: int = 0
-@export var throw_force = 1
+# grenade stats
+@export var throw_force = 16
 
 
 func _ready() -> void:
