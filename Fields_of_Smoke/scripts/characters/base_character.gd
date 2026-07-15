@@ -68,11 +68,15 @@ func _ready():
 	
 	
 func _process(delta):
+	if get_tree().paused:
+		return
 	if is_dead || get_tree().paused:
 		return
 		
 		
 func _physics_process(delta: float) -> void:
+	if get_tree().paused:
+		return
 	if is_dead:
 		return
 	# Add the gravity
@@ -136,7 +140,6 @@ func weapon_shooting():
 		print("no ammo")
 		return
 	if weapon.current_ammo < 1:
-		print("reloading")
 		weapon.reload()
 	else:
 		pass

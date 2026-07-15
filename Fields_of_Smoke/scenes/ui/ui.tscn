@@ -14,11 +14,15 @@ colors = PackedColorArray(0.57, 0.13110001, 0.13110001, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7vp6q"]
 gradient = SubResource("Gradient_pfayw")
 
+[sub_resource type="Gradient" id="Gradient_7vp6q"]
+colors = PackedColorArray(0.18, 0.18, 0.18, 1, 1, 1, 1, 1)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7vp6q"]
 noise_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jcn1r"]
 noise = SubResource("FastNoiseLite_7vp6q")
+color_ramp = SubResource("Gradient_7vp6q")
 seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uegxj"]
@@ -27,6 +31,7 @@ shader_parameter/blood_texture = SubResource("GradientTexture2D_7vp6q")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_jcn1r")
 shader_parameter/blood_intensity = 0.0
 shader_parameter/random_offset = Vector2(0, 0)
+shader_parameter/darkness_factor = 0.15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt7q6"]
 bg_color = Color(0.7047895, 0, 0.25790915, 1)

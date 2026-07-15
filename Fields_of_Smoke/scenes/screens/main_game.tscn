@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://byh5mjsom0113" path="res://scenes/misc/target.tscn" id="9_w1shy"]
 [ext_resource type="PackedScene" uid="uid://yak5xtimvwh8" path="res://scenes/areas/base.tscn" id="10_t0fsf"]
 [ext_resource type="PackedScene" uid="uid://dwg7u1v6se4w6" path="res://scenes/characters/friend_1.tscn" id="11_u3okq"]
-[ext_resource type="PackedScene" uid="uid://dcikk3cpme1yk" path="res://scenes/weapons/machine_gun_nest.tscn" id="13_cs2f8"]
+[ext_resource type="PackedScene" uid="uid://gxfbody2xap" path="res://scenes/weapons/machine_gun_nest.tscn" id="13_cs2f8"]
 [ext_resource type="PackedScene" uid="uid://dkayvq5gc8agt" path="res://scenes/tools/medkit.tscn" id="13_q7ch5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5cypo"]

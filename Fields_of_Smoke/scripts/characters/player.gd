@@ -89,7 +89,7 @@ func _ready():
 
 
 func _input(event):
-	if is_dead || get_tree().paused:
+	if is_dead || get_tree().paused || !can_move:
 		return
 	if event is InputEventMouseMotion:
 		manage_direction(event)
@@ -110,44 +110,45 @@ func _process(delta):
 	# handle interactable
 	if Input.is_action_just_pressed("use") && current_interactable != null:
 		current_interactable.interact(self)
-	if !can_move:
-		return
-	# handle shooting
-	if Input.is_action_pressed("shoot"):
-		current_weapon.trigger_held(camera.global_transform)
-	if Input.is_action_just_pressed("shoot"):
-		current_weapon.trigger_pressed(camera.global_transform)
-	if Input.is_action_just_released("shoot"):
-		current_weapon.trigger_released(camera.global_transform)
-	# aim down sight
-	if Input.is_action_just_pressed("ADS"):
-		ads = true
-		current_weapon.secondary_action(ads)
-		weapon_holder.is_ads = ads
-		aim_changed.emit(ads)
-	if Input.is_action_just_released("ADS"):
-		ads = false
-		current_weapon.secondary_action(ads)
-		weapon_holder.is_ads = ads
-		aim_changed.emit(ads)
-	# switch last item in inventory
-	#if Input.is_action_just_released("last_slot") && last_weapon_index != current_weapon_index:
-		#equip_weapon(last_weapon_index)
-	# 
-	if Input.is_action_just_pressed("reload"):
-		current_weapon.reload()
-	if Input.is_action_just_pressed("run"):
-		internal_speed_changer = 2
-	if Input.is_action_just_released("run"):
-		internal_speed_changer = 1
-	# recoil vertical
-	recoil = lerp(recoil, recoil_target, 10.0 * delta)
-	recoil_target = lerp(recoil_target, 0.0, 5.0 * delta)
-	camera_pivot.rotation.x = pitch + recoil
-	# recoil horizontal
-	recoil_yaw = lerp(recoil_yaw, recoil_yaw_target, 12.0 * delta)
-	recoil_yaw_target = lerp(recoil_yaw_target, 0.0, 4.0 * delta)
-	rotation.y = yaw + recoil_yaw
+	else:
+		if !can_move:
+			return
+		# handle shooting
+		if Input.is_action_pressed("shoot"):
+			current_weapon.trigger_held(camera.global_transform)
+		if Input.is_action_just_pressed("shoot"):
+			current_weapon.trigger_pressed(camera.global_transform)
+		if Input.is_action_just_released("shoot"):
+			current_weapon.trigger_released(camera.global_transform)
+		# aim down sight
+		if Input.is_action_just_pressed("ADS"):
+			ads = true
+			current_weapon.secondary_action(ads)
+			weapon_holder.is_ads = ads
+			aim_changed.emit(ads)
+		if Input.is_action_just_released("ADS"):
+			ads = false
+			current_weapon.secondary_action(ads)
+			weapon_holder.is_ads = ads
+			aim_changed.emit(ads)
+		# switch last item in inventory
+		#if Input.is_action_just_released("last_slot") && last_weapon_index != current_weapon_index:
+			#equip_weapon(last_weapon_index)
+		# 
+		if Input.is_action_just_pressed("reload"):
+			current_weapon.reload()
+		if Input.is_action_just_pressed("run"):
+			internal_speed_changer = 2
+		if Input.is_action_just_released("run"):
+			internal_speed_changer = 1
+		# recoil vertical
+		recoil = lerp(recoil, recoil_target, 10.0 * delta)
+		recoil_target = lerp(recoil_target, 0.0, 5.0 * delta)
+		camera_pivot.rotation.x = pitch + recoil
+		# recoil horizontal
+		recoil_yaw = lerp(recoil_yaw, recoil_yaw_target, 12.0 * delta)
+		recoil_yaw_target = lerp(recoil_yaw_target, 0.0, 4.0 * delta)
+		rotation.y = yaw + recoil_yaw
 
 
 func _physics_process(delta: float) -> void:
@@ -185,8 +186,12 @@ func manage_gravity(delta: float):
 
 
 func manage_movement():
+	if !can_move:
+		return
 	var input_dir = Input.get_vector("left", "right", "backwards", "forward")
 	var direction = Vector3.ZERO
+	var target_tilt = -input_dir.x * lean_amount
+	camera_pivot.rotation.z = lerp(camera_pivot.rotation.z, target_tilt, lean_speed)
 	
 	# get forward and right directions from player
 	var forward = -transform.basis.z
@@ -204,9 +209,6 @@ func manage_movement():
 	else:
 		velocity.x = direction.x * BASE_SPEED * speed_changer
 		velocity.z = direction.z * BASE_SPEED * speed_changer
-	
-	var target_tilt = -input_dir.x * lean_amount
-	camera_pivot.rotation.z = lerp(camera_pivot.rotation.z, target_tilt, lean_speed)
 	
 	# Handle jump
 	if Input.is_action_just_pressed("jump") && is_on_floor():
