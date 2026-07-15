@@ -11,18 +11,17 @@
 script = ExtResource("1_yjg27")
 bullet_hole_scene = ExtResource("2_72cfv")
 
-[node name="machine_gun" parent="." unique_id=1284744362 instance=ExtResource("3_ur525")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.014457464)
+[node name="machine_gun" parent="." unique_id=1904736480 instance=ExtResource("3_ur525")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025960922, -0.2658633)
 
 [node name="Muzzle" type="Node3D" parent="." unique_id=1641798917]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049170785, -0.40594187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033711985, -1.0183458)
 
 [node name="MuzzleFlash" parent="Muzzle" unique_id=47607579 instance=ExtResource("4_kmiw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02420102, 0)
 visible = false
 
 [node name="Flash" type="OmniLight3D" parent="Muzzle" unique_id=1804706399]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010608666, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009184413, 0)
 visible = false
 light_color = Color(0.96875, 0.6322056, 0.27624512, 1)
 light_energy = 0.2

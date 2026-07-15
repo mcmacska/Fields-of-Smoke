@@ -27,7 +27,7 @@ shape = SubResource("BoxShape3D_q4nyr")
 [node name="DamageArea" type="Area3D" parent="." unique_id=874101827]
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea" unique_id=1993864994]
+[node name="DamageCollision" type="CollisionShape3D" parent="DamageArea" unique_id=1993864994]
 shape = SubResource("SphereShape3D_aajn0")
 
 [connection signal="timeout" from="FuseTimer" to="." method="_on_fuse_timeout"]
