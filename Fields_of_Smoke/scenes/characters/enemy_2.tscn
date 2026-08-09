@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://c6pey2hbuar2l"]
 
-[ext_resource type="Script" uid="uid://b23gkiw3s2xye" path="res://Roli/base/base_character.gd" id="1_k4xaa"]
+[ext_resource type="Script" uid="uid://b23gkiw3s2xye" path="res://scripts/characters/base/base_character.gd" id="1_k4xaa"]
 [ext_resource type="PackedScene" uid="uid://cgxyl50ai646i" path="res://scenes/characters/enemy_body.tscn" id="2_aydar"]
+[ext_resource type="Script" uid="uid://duxj8fb6a54by" path="res://scripts/Health.gd" id="3_k4xaa"]
 [ext_resource type="PackedScene" uid="uid://c8hc4y4nw5rsk" path="res://scenes/weapons/weapon.tscn" id="3_oo0ni"]
 [ext_resource type="PackedScene" uid="uid://ct7dldftjrt0d" path="res://assets/characters/enemy.glb" id="4_oyh67"]
 
@@ -18,8 +19,12 @@ collision_mask = 7
 script = ExtResource("1_k4xaa")
 weapon = NodePath("Weapon")
 dead_scene = ExtResource("2_aydar")
+speed = 8.0
 friends_group_name = "enemies"
 enemies_group_name = "friends"
+
+[node name="Health" type="Node" parent="." unique_id=1731313177]
+script = ExtResource("3_k4xaa")
 
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=409270568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013061523, 0)
@@ -33,11 +38,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Body" parent="." unique_id=932600384 instance=ExtResource("4_oyh67")]
 
-[node name="Area2D" type="Area3D" parent="." unique_id=1823080115 groups=["enemies"]]
+[node name="Area3D" type="Area3D" parent="." unique_id=1823080115 groups=["enemies"]]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area2D" unique_id=2121553163]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2121553163]
 shape = SubResource("ConvexPolygonShape3D_aydar")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_3d_body_exited"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=847506134]
+
+[connection signal="died" from="Health" to="." method="_on_health_died"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
