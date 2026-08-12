@@ -4,7 +4,7 @@ class_name BaseCharacter2
 
 #var current_target: Node2D = null
 
-@onready var body_mesh = $Body
+@onready var body = $Body
 
 var push_direction: Vector3 = Vector3()
 
@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0
 	
 	update_state(delta)
+	
 	move_and_slide()
 
 
@@ -34,9 +35,8 @@ func set_push_strength(strength, direction):
 func _on_health_died() -> void:
 	is_dead = true
 	died.emit()
-	var body = dead_scene.instantiate()
 	body.global_transform = global_transform
-	#body.linear_velocity = velocity
-	get_parent().add_child(body)
-	body.hitbone(push_direction.normalized() * push_strength)
+	body.reparent(get_parent(), true)
+	body.died(push_direction.normalized() * push_strength)
 	queue_free()
+	

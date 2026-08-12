@@ -28,6 +28,9 @@ func is_aiming_at_target(target: Node3D) -> bool:
 
 
 func rotate_towards(dir: Vector3, delta: float) -> void:
+	if dir == Vector3.ZERO:
+		return
+		
 	var target_basis = Basis.looking_at(dir, Vector3.UP)
 	
 	global_transform.basis = global_transform.basis.slerp(

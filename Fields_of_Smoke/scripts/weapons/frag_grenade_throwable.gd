@@ -7,6 +7,7 @@ extends RigidBody3D
 @export var fuse_time: float = 4.0
 @export var fuse_timer: Timer
 @export var radius: float = 10.0
+@export var push_strength: float = -10.0
 
 var bodies: Array[Node] = []
 
@@ -28,6 +29,8 @@ func _on_fuse_timeout() -> void:
 	# apply damage
 	for b in bodies:
 		apply_damage(b)
+		var direction = (b.global_position - global_position).normalized()
+		set_push_strength(b, direction)
 	queue_free()
 	
 
@@ -35,8 +38,15 @@ func apply_damage(body: Node):
 	var distance = global_position.distance_to(body.global_position)
 	var t = inverse_lerp(radius, 0.0, distance)
 	var damage = base_damage * t
-	body.health.take_damage(max(damage, 0.0))
+	var health = body.get_node_or_null("Health")
+	if health:
+		health.take_damage(max(damage, 0.0))
 
+
+func set_push_strength(body: Node3D, direction:  Vector3):
+	if body.has_method("set_push_strength"):
+		body.set_push_strength(push_strength, direction)
+		
 
 func _on_damage_area_body_entered(body: Node3D) -> void:
 	print("body: ", body)

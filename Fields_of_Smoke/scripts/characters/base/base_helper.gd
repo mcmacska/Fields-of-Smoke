@@ -48,7 +48,6 @@ func create_ray(body: Node3D) -> bool:
 	query.exclude = [self]
 	
 	var result = space_state.intersect_ray(query)
-	print("result: ", result)
 	if result:
 		return result.collider == body # print("somebody touched my spaget")
 	return false

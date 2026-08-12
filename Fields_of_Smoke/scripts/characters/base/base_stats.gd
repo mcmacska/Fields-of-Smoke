@@ -18,7 +18,6 @@ var eye_level_origin := Vector3(0, 0.5, 0)
 var distance_moved = 0
 @export var push_strength: float = 1.0
 var is_dead = false
-const max_distance = 100
 var bases: Array[Node] = []
 var base_target: Node
 var targets: Array = []

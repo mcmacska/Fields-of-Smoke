@@ -2,17 +2,17 @@ extends Node3D
 
 
 @onready var skeleton_sim = $"Armature/Skeleton3D/PhysicalBoneSimulator3D"
-@onready var bone = $"Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Bone"
+@onready var bone = $"Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone torso"
 @onready var timer = $"Timer"
 
 
-func _ready() -> void:
-	timer.wait_time = 1 * 60
+func died(push: Vector3) -> void:
+	timer.wait_time = 60.0
 	timer.start()
+	# start ragdoll
+	skeleton_sim.active = true
 	skeleton_sim.physical_bones_start_simulation()
-
-
-func hitbone(push: Vector3) -> void:
+	# apply push force
 	bone.apply_central_impulse(push)
 
 

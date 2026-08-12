@@ -29,6 +29,7 @@ friends=""
 enemies=""
 capture_points=""
 player=""
+navigation_mesh_source_group=""
 
 [input]
 

@@ -13,7 +13,6 @@ class_name BaseCharacter
 # var direction := Vector2.LEFT
 var eye_level_origin := Vector3(0, 0, 0)
 var distance_moved = 0
-const max_distance = 100
 
 var targets: Array = []
 #var current_target: Node2D = null
@@ -261,7 +260,6 @@ func create_ray(body: Node3D):
 	query.exclude = [self]
 	
 	var result = space_state.intersect_ray(query)
-	print("result: ", result)
 	if result:
 		print("somebody touched my spaget")
 
