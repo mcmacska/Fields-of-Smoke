@@ -2,7 +2,7 @@ extends RigidBody3D
 
 @onready var explosion_effect: Node3D = $Explosion
 @onready var damage_collision: CollisionShape3D = $DamageArea/DamageCollision
-
+@onready var explosion_sound = $ExplosionSound
 @export var base_damage: int = 150
 @export var fuse_time: float = 4.0
 @export var fuse_timer: Timer
@@ -24,13 +24,12 @@ func _process(delta: float) -> void:
 
 func _on_fuse_timeout() -> void:
 	fuse_timer.stop()
-	explosion_effect.reparent(get_parent())
-	explosion_effect.explode()
 	# apply damage
 	for b in bodies:
 		apply_damage(b)
 		var direction = (b.global_position - global_position).normalized()
 		set_push_strength(b, direction)
+	await explosion_effects()
 	queue_free()
 	
 
@@ -41,6 +40,14 @@ func apply_damage(body: Node):
 	var health = body.get_node_or_null("Health")
 	if health:
 		health.take_damage(max(damage, 0.0))
+
+
+func explosion_effects():
+	explosion_effect.reparent(get_parent())
+	explosion_effect.explode()
+	explosion_sound.pitch_scale = randf_range(0.95, 1.05)
+	explosion_sound.play()
+	await explosion_sound.finished
 
 
 func set_push_strength(body: Node3D, direction:  Vector3):

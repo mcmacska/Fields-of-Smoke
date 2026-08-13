@@ -3,12 +3,10 @@ extends Node3D
 
 @onready var skeleton_sim = $"Armature/Skeleton3D/PhysicalBoneSimulator3D"
 @onready var bone = $"Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone torso"
-@onready var timer = $"Timer"
 
 
 func died(push: Vector3) -> void:
-	timer.wait_time = 60.0
-	timer.start()
+	start_timer()
 	# start ragdoll
 	skeleton_sim.active = true
 	skeleton_sim.physical_bones_start_simulation()
@@ -16,5 +14,6 @@ func died(push: Vector3) -> void:
 	bone.apply_central_impulse(push)
 
 
-func _on_timer_timeout() -> void:
+func start_timer():
+	await get_tree().create_timer(60.0).timeout
 	queue_free()

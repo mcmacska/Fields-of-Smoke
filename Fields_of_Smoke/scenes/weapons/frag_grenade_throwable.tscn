@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ctup1i13in0bk" path="res://scripts/weapons/frag_grenade_throwable.gd" id="1_kmhl2"]
 [ext_resource type="PackedScene" uid="uid://dle1wfbe52gfx" path="res://assets/weapons/frag_grenade.glb" id="2_kmhl2"]
 [ext_resource type="PackedScene" uid="uid://vk2xkl3l8p2g" path="res://scenes/misc/explosion.tscn" id="3_aajn0"]
+[ext_resource type="AudioStream" uid="uid://cs1gbaj3m5ykq" path="res://assets/weapons/frag_grenade.mp3" id="4_0kyv5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4nyr"]
 size = Vector3(0.050930023, 0.08202553, 0.05130768)
@@ -29,6 +30,10 @@ collision_mask = 3
 
 [node name="DamageCollision" type="CollisionShape3D" parent="DamageArea" unique_id=1993864994]
 shape = SubResource("SphereShape3D_aajn0")
+
+[node name="ExplosionSound" type="AudioStreamPlayer3D" parent="." unique_id=1492050914]
+stream = ExtResource("4_0kyv5")
+max_distance = 64.0
 
 [connection signal="timeout" from="FuseTimer" to="." method="_on_fuse_timeout"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
