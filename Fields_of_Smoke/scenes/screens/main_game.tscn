@@ -43,7 +43,7 @@ script = ExtResource("1_ntyfd")
 environment = SubResource("Environment_wjob3")
 
 [node name="Trench" parent="." unique_id=1418688407 groups=["navigation_mesh_source_group"] instance=ExtResource("3_ntyfd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17419648, 53.92138)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0488472, 0.28761888, 53.88537)
 
 [node name="Player" parent="." unique_id=1976144270 instance=ExtResource("4_q7ch5")]
 transform = Transform3D(0.32082793, 0, -0.9471375, 0, 1, 0, 0.9471375, 0, 0.32082793, -15.07647, 1.0126235, 61.139534)
@@ -105,7 +105,7 @@ shape = 0
 material = SubResource("FogMaterial_q7ch5")
 
 [node name="Nest" parent="." unique_id=70947009 instance=ExtResource("13_cs2f8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.363982, 1.670721, 54.816177)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.363982, 1.7739614, 54.686962)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=667916946]
 navigation_mesh = SubResource("NavigationMesh_q7ch5")

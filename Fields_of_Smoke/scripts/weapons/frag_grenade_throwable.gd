@@ -13,6 +13,7 @@ var bodies: Array[Node] = []
 
 
 func _ready() -> void:
+	explosion_sound.pitch_scale = randf_range(0.3, 1.8)
 	damage_collision.shape.radius = radius
 	fuse_timer.wait_time = fuse_time
 	fuse_timer.start()

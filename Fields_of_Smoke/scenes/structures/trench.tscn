@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cs0bg00kamhhu" path="res://assets/structures/map_1.glb" id="1_ff322"]
 [ext_resource type="PackedScene" uid="uid://d0q05auuto2ra" path="res://scenes/structures/concrete_cover.tscn" id="2_7d4wa"]
 
-[node name="Trench" type="StaticBody3D" unique_id=1418688407]
-collision_layer = 4
-collision_mask = 3
+[node name="Trench" type="Node3D" unique_id=313809477]
 
 [node name="bunker2" parent="." unique_id=157336533 instance=ExtResource("1_3pf4t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.546772, 0, 17.62061)

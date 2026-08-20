@@ -10,7 +10,43 @@
 radius = 0.25341797
 height = 1.7897949
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6eyoc"]
+[sub_resource type="Gradient" id="Gradient_t1xyf"]
+colors = PackedColorArray(0.39, 0.2795, 0, 1, 1, 0.9333334, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uy4db"]
+noise_type = 4
+frequency = 0.0136
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_atpat"]
+noise = SubResource("FastNoiseLite_uy4db")
+color_ramp = SubResource("Gradient_t1xyf")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3xx8"]
+albedo_texture = SubResource("NoiseTexture2D_atpat")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kqtwu"]
+material = SubResource("StandardMaterial3D_i3xx8")
+top_radius = 0.01
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqhf5"]
+albedo_color = Color(0.19215687, 0.38431373, 0.6745098, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6eyoc"]
+material = SubResource("StandardMaterial3D_eqhf5")
+size = Vector3(0.1, 0.15, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffr0p"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eojnx"]
+material = SubResource("StandardMaterial3D_ffr0p")
+size = Vector3(0.01, 0.02, 0.2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_atpat"]
+radius = 0.16
+height = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_atpat"]
 radius = 0.8892095
@@ -25,6 +61,7 @@ shape = SubResource("CapsuleShape3D_vsclp")
 
 [node name="Health" type="Node" parent="." unique_id=627811805]
 script = ExtResource("3_ifusu")
+max_health = -1
 
 [node name="Body" parent="." unique_id=568535268 instance=ExtResource("4_ifusu")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -36,26 +73,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5690636, -0.0018848777)
 cull_mask = 1048567
 script = ExtResource("4_bs8hp")
 
+[node name="Face" type="Node3D" parent="CameraPivot" unique_id=652910744]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Hat" type="MeshInstance3D" parent="CameraPivot/Face" unique_id=1303260235]
+transform = Transform3D(0.9862568, 0.16521975, 0, -0.16521975, 0.9862568, 0, 0, 0, 1, 0, 0.95558655, 0)
+mesh = SubResource("CylinderMesh_kqtwu")
+
+[node name="Glasses" type="Node3D" parent="CameraPivot/Face" unique_id=883259408]
+
+[node name="Cube" type="MeshInstance3D" parent="CameraPivot/Face/Glasses" unique_id=625294188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.588, 0.15)
+layers = 8
+mesh = SubResource("BoxMesh_6eyoc")
+
+[node name="Cube2" type="MeshInstance3D" parent="CameraPivot/Face/Glasses" unique_id=810854392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.588, -0.15)
+layers = 8
+mesh = SubResource("BoxMesh_6eyoc")
+
+[node name="Cube3" type="MeshInstance3D" parent="CameraPivot/Face/Glasses" unique_id=1641793971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.588, 0)
+layers = 8
+mesh = SubResource("BoxMesh_eojnx")
+
+[node name="Cube4" type="MeshInstance3D" parent="CameraPivot/Face/Glasses" unique_id=1223974527]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.11019766, 0.588, 0.23755649)
+layers = 8
+mesh = SubResource("BoxMesh_eojnx")
+
+[node name="Cube5" type="MeshInstance3D" parent="CameraPivot/Face/Glasses" unique_id=567638799]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.11, 0.588, -0.238)
+layers = 8
+mesh = SubResource("BoxMesh_eojnx")
+
+[node name="WeaponnWallDetector" type="Area3D" parent="CameraPivot" unique_id=1194040110]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraPivot/WeaponnWallDetector" unique_id=1439418923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.653, -0.44137)
+shape = SubResource("CapsuleShape3D_atpat")
+
 [node name="WeaponHolder" type="Node3D" parent="." unique_id=929256609 node_paths=PackedStringArray("camera_p", "player") groups=["friends"]]
 top_level = true
 script = ExtResource("5_atpat")
 camera_p = NodePath("../CameraPivot")
 player = NodePath("..")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1194040110]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1439418923]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44884717, -0.81199276)
-shape = SubResource("SphereShape3D_6eyoc")
-
 [node name="InteractionDetector" type="Area3D" parent="." unique_id=1165846523]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionDetector" unique_id=28911492]
 shape = SubResource("SphereShape3D_atpat")
 
-[connection signal="body_entered" from="Area3D" to="WeaponHolder" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="WeaponHolder" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="CameraPivot/WeaponnWallDetector" to="WeaponHolder" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="CameraPivot/WeaponnWallDetector" to="WeaponHolder" method="_on_area_3d_body_exited"]
 [connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
 [connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]

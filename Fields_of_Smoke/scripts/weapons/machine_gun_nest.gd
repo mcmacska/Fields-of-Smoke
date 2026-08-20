@@ -6,7 +6,7 @@ extends Interactable
 @onready var area = $Area3D
 @onready var seat_marker = $YawPivot/SeatMarker
 @onready var exit_marker = $ExitMarker
-@onready var bullet_origin = $YawPivot/PitchPivot/BulletOrigin
+@onready var bullet_origin = $YawPivot/PitchPivot/Weapon/BulletOrigin
 @onready var camera_position = $YawPivot/PitchPivot/CameraPosition
 @export var sensitivity: float = 0.002
 @export var timer: Timer
@@ -43,7 +43,7 @@ func _input(event: InputEvent) -> void:
 		pitch_pivot.rotation.x = pitch
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if get_tree().paused:
 		return
 	if current_user == null:

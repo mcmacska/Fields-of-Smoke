@@ -38,11 +38,11 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 # each weapon implements the functions
-func trigger_pressed(camera_transform: Transform3D):
+func trigger_pressed(_camera_transform: Transform3D):
 	pass
 
 
@@ -50,7 +50,6 @@ func primary_action(camera_transform: Transform3D):
 	if not can_shoot:
 		return
 	can_shoot = false
-	print("shooting...")
 	# cast ray
 	create_ray(camera_transform, wielder)
 	# add effects

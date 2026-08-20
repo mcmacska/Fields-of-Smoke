@@ -5,19 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://vk2xkl3l8p2g" path="res://scenes/misc/explosion.tscn" id="3_aajn0"]
 [ext_resource type="AudioStream" uid="uid://cs1gbaj3m5ykq" path="res://assets/weapons/frag_grenade.mp3" id="4_0kyv5"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q4nyr"]
-size = Vector3(0.050930023, 0.08202553, 0.05130768)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0kyv5"]
+radius = 0.04
+height = 0.14
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aajn0"]
 radius = 4.0168533
 
 [node name="Frag" type="RigidBody3D" unique_id=1231177094 node_paths=PackedStringArray("fuse_timer")]
+continuous_cd = true
 script = ExtResource("1_kmhl2")
 fuse_timer = NodePath("FuseTimer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=330216816]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.43866e-05, 0.009268761, 0)
-shape = SubResource("BoxShape3D_q4nyr")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016205199, 0)
+shape = SubResource("CapsuleShape3D_0kyv5")
 
 [node name="frag_grenade" parent="." unique_id=1389421826 instance=ExtResource("2_kmhl2")]
 
@@ -33,7 +35,8 @@ shape = SubResource("SphereShape3D_aajn0")
 
 [node name="ExplosionSound" type="AudioStreamPlayer3D" parent="." unique_id=1492050914]
 stream = ExtResource("4_0kyv5")
-max_distance = 64.0
+volume_db = 5.0
+max_distance = 100.0
 
 [connection signal="timeout" from="FuseTimer" to="." method="_on_fuse_timeout"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

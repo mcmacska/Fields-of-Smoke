@@ -43,6 +43,7 @@ var inventory: Dictionary = {}
 var current_weapon_index := 0
 var last_weapon_index := 0
 var current_weapon: Node = null
+@export var can_ads: bool = true
 var ads: bool = false
 @onready var weapon_holder: Node3D = $WeaponHolder
 signal ammo_changed(current, max)
@@ -73,9 +74,6 @@ func _on_died():
 	set_physics_process(false)
 
 func _ready():
-	# overwrite initial health
-	health.max_health = 1000
-	health.health = 1000
 	health.died.connect(_on_died)
 	# add starter weapons
 	add_weapon(preload("res://scenes/weapons/weapon.tscn"))
@@ -121,12 +119,12 @@ func _process(delta):
 		if Input.is_action_just_released("shoot"):
 			current_weapon.trigger_released(camera.global_transform)
 		# aim down sight
-		if Input.is_action_just_pressed("ADS"):
+		if Input.is_action_just_pressed("ADS") and can_ads:
 			ads = true
 			current_weapon.secondary_action(ads)
 			weapon_holder.is_ads = ads
 			aim_changed.emit(ads)
-		if Input.is_action_just_released("ADS"):
+		if Input.is_action_just_released("ADS") or !can_ads:
 			ads = false
 			current_weapon.secondary_action(ads)
 			weapon_holder.is_ads = ads

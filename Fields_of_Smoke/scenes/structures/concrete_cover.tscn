@@ -109,6 +109,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yh6b2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1lhjv"]
+size = Vector3(29.988, 1.6, 1.993)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sov36"]
 size = Vector3(29.988281, 0.3913908, 1.9934044)
 
 [node name="ConcreteCover" type="StaticBody3D" unique_id=1056110908]
@@ -131,9 +134,14 @@ shape = SubResource("BoxShape3D_1lhjv")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1146591556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015625, 0.16809916, 1.9982176)
-shape = SubResource("BoxShape3D_1lhjv")
+shape = SubResource("BoxShape3D_sov36")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="." unique_id=2139309080]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.03653717, 0.42754292, 0)
+depth = 30.0
+polygon = PackedVector2Array(0.99124575, 1.1264539, 1.008935, -0.443398, 2.9306502, -0.46914363)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="." unique_id=1370318456]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.03653717, 0.42754292, -0.82730937)
 depth = 30.0
 polygon = PackedVector2Array(0.99124575, 1.1264539, 1.008935, -0.443398, 2.9306502, -0.46914363)

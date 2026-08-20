@@ -63,7 +63,6 @@ func primary_action(camera_transform: Transform3D):
 		reload()
 		return
 	can_shoot = false
-	print("shooting...")
 	# cast ray
 	create_ray(camera_transform, wielder)
 	# add effects

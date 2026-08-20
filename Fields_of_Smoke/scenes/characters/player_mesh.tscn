@@ -2,10 +2,35 @@
 
 [ext_resource type="PackedScene" uid="uid://538dx85456pp" path="res://assets/characters/player.glb" id="1_uasrd"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1xyf"]
+albedo_color = Color(1, 0.120000005, 0.120000005, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uy4db"]
+material = SubResource("StandardMaterial3D_t1xyf")
+top_radius = 0.01
+bottom_radius = 0.25
+height = 0.4
+
+[sub_resource type="TorusMesh" id="TorusMesh_hpnt1"]
+inner_radius = 0.172
+outer_radius = 0.3
+
 [node name="player" unique_id=1321829767 instance=ExtResource("1_uasrd")]
 
-[node name="Cylinder" parent="." index="0" unique_id=545042699]
+[node name="Cylinder" parent="." index="0" unique_id=641545106]
 layers = 8
 
-[node name="Cube" parent="." index="1" unique_id=408806382]
+[node name="Cube" parent="." index="1" unique_id=323770482]
+visible = false
 layers = 8
+
+[node name="Hat2" type="Node3D" parent="." index="2" unique_id=1003329776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1427016, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hat2" index="0" unique_id=771843979]
+mesh = SubResource("CylinderMesh_uy4db")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Hat2" index="1" unique_id=431398696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23514068, 0)
+mesh = SubResource("TorusMesh_hpnt1")

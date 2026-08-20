@@ -3,7 +3,6 @@ extends TextureRect
 @export var timer: Timer
 
 func did_hit():
-	print("skibidi")
 	visible = true
 	timer.start()
 

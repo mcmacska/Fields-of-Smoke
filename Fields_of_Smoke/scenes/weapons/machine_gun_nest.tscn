@@ -6,9 +6,15 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_nabwx"]
 radius = 1.0304823
 
-[node name="Nest" type="Node3D" unique_id=70947009 node_paths=PackedStringArray("timer")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0vhv"]
+albedo_color = Color(0.18039216, 0.19215687, 0.21568628, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nabwx"]
+material = SubResource("StandardMaterial3D_h0vhv")
+size = Vector3(0.3, 0.1, 0.3)
+
+[node name="Nest" type="Node3D" unique_id=70947009]
 script = ExtResource("1_h0vhv")
-timer = NodePath("")
 
 [node name="YawPivot" type="Node3D" parent="." unique_id=1735268843]
 
@@ -18,12 +24,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5152837)
 [node name="PitchPivot" type="Node3D" parent="YawPivot" unique_id=24230562]
 
 [node name="CameraPosition" type="Marker3D" parent="YawPivot/PitchPivot" unique_id=2134022843]
-
-[node name="BulletOrigin" type="Marker3D" parent="YawPivot/PitchPivot" unique_id=148989587]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2662942, -0.6939685)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011, -0.255, 0.5)
 
 [node name="Weapon" parent="YawPivot/PitchPivot" unique_id=584955304 instance=ExtResource("3_nabwx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22727448, 0.33734763)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22209853, 0.36191842)
+recoil_distance = 0.0
+hip_position = Vector3(0, 0.222, 0.362)
+ads_position = Vector3(0, 0.222, 0.362)
+
+[node name="BulletOrigin" type="Marker3D" parent="YawPivot/PitchPivot/Weapon" unique_id=148989587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010510087, 0.034969747, -1.0064731)
 
 [node name="ExitMarker" type="Marker3D" parent="." unique_id=1236428981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.002943)
@@ -32,3 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.002943)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1124718502]
 shape = SubResource("SphereShape3D_nabwx")
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=1657768070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, -0.0049286485, 0.0007764101)
+mesh = SubResource("BoxMesh_nabwx")

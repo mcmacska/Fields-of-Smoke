@@ -17,8 +17,8 @@ func _ready() -> void:
 	recoil_speed = 16.0
 	return_speed = 8.0
 	# position
-	hip_position = Vector3.ZERO
-	ads_position = Vector3.ZERO
+	#hip_position = Vector3.ZERO
+	#ads_position = Vector3.ZERO
 	#hip_position = Vector3(0.01, 0.315, 0.44)
 	#ads_position = Vector3(0.01, 0.315, 0.44)
 

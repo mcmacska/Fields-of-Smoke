@@ -4,6 +4,7 @@ extends Node3D
 @onready var ui = $CanvasLayer/Ui
 @onready var pause_menu = $PauseMenu
 @onready var death_screen = $DeathScreen
+@export var pausable = true
 
 @onready var baseContainer = $CanvasLayer/Ui/BaseContainer
 var capture_bar_ui_scene = preload("res://scenes/misc/capture_bar_ui.tscn")
@@ -49,6 +50,8 @@ func _input(event):
 
 
 func toggle_pause():
+	if !pausable:
+		return
 	var paused = get_tree().paused
 	get_tree().paused = !paused
 	pause_menu.visible = !paused
@@ -56,8 +59,11 @@ func toggle_pause():
 
 
 func player_died():
+	pausable = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	death_screen.visible = true
+	var paused = get_tree().paused
+	get_tree().paused = !paused
 
 
 func check_win_condition():
