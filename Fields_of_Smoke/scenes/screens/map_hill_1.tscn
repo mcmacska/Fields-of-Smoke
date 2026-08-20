@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bmytgns8tar8c"]
+
+[ext_resource type="Script" uid="uid://di1h8656itdcf" path="res://scripts/main_game.gd" id="1_or0su"]
+[ext_resource type="Texture2D" uid="uid://cfgxdv2w3l564" path="res://assets/background/sky_1.exr" id="2_juajv"]
+[ext_resource type="PackedScene" uid="uid://cxhcvkrllwfy1" path="res://assets/structures/hill_1.glb" id="3_8mkih"]
+[ext_resource type="PackedScene" uid="uid://dmh0xdhi3qwgo" path="res://scenes/characters/player.tscn" id="4_7kivh"]
+[ext_resource type="PackedScene" uid="uid://c6pey2hbuar2l" path="res://scenes/characters/enemy_2.tscn" id="5_m8db3"]
+[ext_resource type="PackedScene" uid="uid://dsf3dharnjswa" path="res://scenes/characters/friend_2.tscn" id="6_jcdof"]
+[ext_resource type="PackedScene" uid="uid://bc3d6w0jbe7wm" path="res://scenes/ui/ui.tscn" id="7_d87qt"]
+[ext_resource type="PackedScene" uid="uid://cmlywluvl53jp" path="res://scenes/screens/death_screen.tscn" id="8_1n300"]
+[ext_resource type="PackedScene" uid="uid://baxgt4igkjr72" path="res://scenes/screens/pause_menu.tscn" id="9_dcj2b"]
+[ext_resource type="PackedScene" uid="uid://yak5xtimvwh8" path="res://scenes/areas/base.tscn" id="11_y5u67"]
+[ext_resource type="PackedScene" uid="uid://gxfbody2xap" path="res://scenes/weapons/machine_gun_nest.tscn" id="13_vmp0y"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5cypo"]
+panorama = ExtResource("2_juajv")
+
+[sub_resource type="Sky" id="Sky_o6v7o"]
+sky_material = SubResource("PanoramaSkyMaterial_5cypo")
+
+[sub_resource type="Environment" id="Environment_wjob3"]
+background_mode = 2
+sky = SubResource("Sky_o6v7o")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_q7ch5"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_q7ch5"]
+geometry_source_geometry_mode = 1
+
+[node name="Main" type="Node3D" unique_id=617117156]
+process_mode = 3
+script = ExtResource("1_or0su")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=923018676]
+environment = SubResource("Environment_wjob3")
+
+[node name="hill_1" parent="." unique_id=392395307 instance=ExtResource("3_8mkih")]
+
+[node name="Player" parent="." unique_id=1976144270 instance=ExtResource("4_7kivh")]
+transform = Transform3D(0.18803284, 0, -0.98216283, 0, 1, 0, 0.98216283, 0, 0.18803284, -15.07647, 0.9344773, -6.1903687)
+
+[node name="Enemy1" parent="." unique_id=420266639 instance=ExtResource("5_m8db3")]
+transform = Transform3D(-0.98136646, 0, 0.1921452, 0, 1, 0, -0.1921452, 0, -0.98136646, -49.649418, 12.553886, 53.557217)
+
+[node name="Friend1" parent="." unique_id=1977722120 instance=ExtResource("6_jcdof")]
+transform = Transform3D(-0.95630985, 0, 0.29235497, 0, 1, 0, -0.29235497, 0, -0.95630985, -8.742374, 1.1609402, -7.6905594)
+should_capture = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1215520732]
+
+[node name="Ui" parent="CanvasLayer" unique_id=1645371746 instance=ExtResource("7_d87qt")]
+
+[node name="DeathScreen" parent="." unique_id=1159156638 instance=ExtResource("8_1n300")]
+visible = false
+
+[node name="PauseMenu" parent="." unique_id=106659632 instance=ExtResource("9_dcj2b")]
+visible = false
+
+[node name="PatrolPoints" type="Node" parent="." unique_id=1421993215]
+
+[node name="Marker_1" type="Marker3D" parent="PatrolPoints" unique_id=1166425492]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 0, 50, 0, 0)
+
+[node name="Marker_2" type="Marker3D" parent="PatrolPoints" unique_id=1305028305]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0, -50, 0, 0)
+
+[node name="Base" parent="." unique_id=61812128 instance=ExtResource("11_y5u67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.221466, 0.16815853, 94.29353)
+bar_name = "A"
+
+[node name="FogVolume" type="FogVolume" parent="." unique_id=621036153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7192726, 8.40452, 27.468872)
+size = Vector3(10.775757, 3.3896484, 7.9726563)
+shape = 0
+material = SubResource("FogMaterial_q7ch5")
+
+[node name="Nest" parent="." unique_id=70947009 instance=ExtResource("13_vmp0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.122585, 12.273897, 47.37685)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=667916946]
+navigation_mesh = SubResource("NavigationMesh_q7ch5")

@@ -53,9 +53,15 @@ func toggle_pause():
 	if !pausable:
 		return
 	var paused = get_tree().paused
+	# set mouse visibility
+	if paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	# change
 	get_tree().paused = !paused
 	pause_menu.visible = !paused
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 
 
 func player_died():
