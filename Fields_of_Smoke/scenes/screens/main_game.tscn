@@ -4,15 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cfgxdv2w3l564" path="res://assets/background/sky_1.exr" id="2_u3okq"]
 [ext_resource type="PackedScene" uid="uid://18sfoyps2i4b" path="res://scenes/structures/trench.tscn" id="3_ntyfd"]
 [ext_resource type="PackedScene" uid="uid://dmh0xdhi3qwgo" path="res://scenes/characters/player.tscn" id="4_q7ch5"]
-[ext_resource type="PackedScene" uid="uid://bc3d6w0jbe7wm" path="res://scenes/ui/ui.tscn" id="6_0fkex"]
 [ext_resource type="PackedScene" uid="uid://c6pey2hbuar2l" path="res://scenes/characters/enemy_2.tscn" id="6_cs2f8"]
-[ext_resource type="PackedScene" uid="uid://cmlywluvl53jp" path="res://scenes/screens/death_screen.tscn" id="7_6pas1"]
 [ext_resource type="PackedScene" uid="uid://dsf3dharnjswa" path="res://scenes/characters/friend_2.tscn" id="8_0fkex"]
 [ext_resource type="PackedScene" uid="uid://baxgt4igkjr72" path="res://scenes/screens/pause_menu.tscn" id="8_jqhwc"]
 [ext_resource type="PackedScene" uid="uid://byh5mjsom0113" path="res://scenes/misc/target.tscn" id="9_w1shy"]
 [ext_resource type="PackedScene" uid="uid://yak5xtimvwh8" path="res://scenes/areas/base.tscn" id="10_t0fsf"]
 [ext_resource type="PackedScene" uid="uid://gxfbody2xap" path="res://scenes/weapons/machine_gun_nest.tscn" id="13_cs2f8"]
 [ext_resource type="PackedScene" uid="uid://dkayvq5gc8agt" path="res://scenes/tools/medkit.tscn" id="13_q7ch5"]
+[ext_resource type="PackedScene" uid="uid://627fo52tgw1e" path="res://scenes/misc/loot_drop.tscn" id="14_cs2f8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5cypo"]
 panorama = ExtResource("2_u3okq")
@@ -50,27 +49,35 @@ transform = Transform3D(0.32082793, 0, -0.9471375, 0, 1, 0, 0.9471375, 0, 0.3208
 
 [node name="Enemy1" parent="." unique_id=420266639 instance=ExtResource("6_cs2f8")]
 transform = Transform3D(-0.98136646, 0, 0.1921452, 0, 1, 0, -0.1921452, 0, -0.98136646, 6.4953337, -0.9284524, -162.5321)
+max_health = 100
+dead_scene = null
+speed = 10.0
+friends_group_name = ""
+enemies_group_name = ""
 
 [node name="Enemy2" parent="." unique_id=1336977627 instance=ExtResource("6_cs2f8")]
 transform = Transform3D(-0.9672411, 0, -0.25385916, 0, 1, 0, 0.25385916, 0, -0.9672411, -12.778916, -0.9284524, -162.5321)
+max_health = 100
+dead_scene = null
+speed = 10.0
+friends_group_name = ""
+enemies_group_name = ""
 
 [node name="Friend1" parent="." unique_id=1977722120 instance=ExtResource("8_0fkex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.595411, 1.3723059, 56.30817)
+dead_scene = null
+speed = 10.0
+friends_group_name = ""
+enemies_group_name = ""
 should_capture = false
 
 [node name="Friend2" parent="." unique_id=362117341 instance=ExtResource("8_0fkex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.911537, 1.3723059, 56.30817)
+dead_scene = null
+speed = 10.0
+friends_group_name = ""
+enemies_group_name = ""
 should_capture = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1215520732]
-
-[node name="Ui" parent="CanvasLayer" unique_id=1645371746 instance=ExtResource("6_0fkex")]
-
-[node name="DeathScreen" parent="." unique_id=1159156638 instance=ExtResource("7_6pas1")]
-visible = false
-
-[node name="PauseMenu" parent="." unique_id=106659632 instance=ExtResource("8_jqhwc")]
-visible = false
 
 [node name="PatrolPoints" type="Node" parent="." unique_id=1421993215]
 
@@ -109,3 +116,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.363982, 1.7739614, 54.686
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=667916946]
 navigation_mesh = SubResource("NavigationMesh_q7ch5")
+
+[node name="LootDrop" parent="." unique_id=1034707846 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.551754, 2.3037379, 58.682995)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1160899219]
+
+[node name="BaseContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=44302154]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1159156638 instance=ExtResource("8_jqhwc")]
+
+[node name="LootDrop2" parent="." unique_id=692485330 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.41642, 2.60266, 58.682995)
+
+[node name="LootDrop3" parent="." unique_id=190889811 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.690353, 2.0200443, 58.682995)
+
+[node name="LootDrop4" parent="." unique_id=1149003080 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.690353, 2.0200443, 58.682995)
+
+[node name="LootDrop5" parent="." unique_id=821136223 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.690353, 2.0200443, 58.682995)
+
+[node name="LootDrop6" parent="." unique_id=855322757 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.690353, 2.0200443, 58.682995)
+
+[node name="LootDrop7" parent="." unique_id=1373008257 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.690353, 2.0200443, 58.682995)
+
+[node name="LootDrop8" parent="." unique_id=155563192 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.690353, 2.0200443, 58.682995)
+
+[node name="LootDrop9" parent="." unique_id=1912587369 instance=ExtResource("14_cs2f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.690353, 2.0200443, 58.682995)

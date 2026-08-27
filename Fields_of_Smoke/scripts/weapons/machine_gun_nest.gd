@@ -19,18 +19,28 @@ var current_user: Node = null
 var original_camera_parent: Node
 var original_camera_pivot_transform: Transform3D
 var original_weapon_index: int = 0
+var can_use = true
 
 func _ready() -> void:
 	pass
 
 
 func _input(event: InputEvent) -> void:
-	if get_tree().paused:
-		return
 	if current_user == null:
 		return
-	if just_entered:
+	if get_tree().paused:
+		return
+	if event.is_action_released("use"):
 		just_entered = false
+		return
+	if event.is_action_pressed("use"):
+		if just_entered:
+			return
+		get_viewport().set_input_as_handled()
+		leave_mg(current_user)
+		get_tree().create_timer(0.5).timeout.connect(_on_timer_timeout)
+		can_use = false
+		just_entered = true
 		return
 	if event is InputEventMouseMotion:
 		yaw -= event.relative.x * sensitivity
@@ -58,6 +68,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func interact(body: Node3D):
+	if !can_use:
+		return
 	if current_user == body:
 		leave_mg(body)
 	elif current_user == null:
@@ -93,6 +105,11 @@ func enter_mg(body: Node3D):
 	original_camera_parent = body.camera_pivot.get_parent()
 	body.camera_pivot.reparent(camera_position, false)
 	body.camera_pivot.transform = Transform3D.IDENTITY
+
+
+func _on_timer_timeout():
+	can_use = true
+	print("Sex")
 
 
 func leave_mg(body: Node3D):

@@ -2,6 +2,12 @@ extends CharacterBody3D
 
 class_name BaseStats
 
+
+@onready var muzzle: Node3D = $Muzzle
+@onready var body = $Body
+@export var weapon: Node3D
+@export var loot: PackedScene
+
 @export var max_health = 100
 var health
 

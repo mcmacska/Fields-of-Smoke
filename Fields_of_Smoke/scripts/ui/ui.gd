@@ -37,7 +37,6 @@ func update_ammo(current, max_ammo):
 	
 	
 func update_crosshair(is_ads: bool):
-	print("ui update aim: ", is_ads)
 	if is_ads:
 		crosshair.visible = false
 	else:

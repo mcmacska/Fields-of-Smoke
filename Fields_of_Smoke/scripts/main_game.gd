@@ -1,33 +1,31 @@
 extends Node3D
 
 @onready var player = $Player
-@onready var ui = $CanvasLayer/Ui
-@onready var pause_menu = $PauseMenu
-@onready var death_screen = $DeathScreen
+@onready var pauseMenu = $CanvasLayer/PauseMenu
 @export var pausable = true
 
-@onready var baseContainer = $CanvasLayer/Ui/BaseContainer
+@onready var baseContainer = $CanvasLayer/BaseContainer
 var capture_bar_ui_scene = preload("res://scenes/misc/capture_bar_ui.tscn")
 
 var capture_points: Array = []
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	player.health.health_changed.connect(ui._on_health_changed)
-	player.hit.connect(ui._on_hit)
+	#player.health.health_changed.connect(ui._on_health_changed)
+	#player.hit.connect(ui._on_hit)
 	#player.weapon_changed.connect(weapon_changed)
 	
 	# init ammo
-	player.ammo_changed.connect(ui.update_ammo)
-	player.sync_ammo()
+	#player.ammo_changed.connect(ui.update_ammo)
+	#player.sync_ammo()
 	
-	# init player health
-	ui.get_node("HealthBar").max_value = player.get_node("Health").max_health
-	ui.get_node("HealthBar").value = player.get_node("Health").max_health
+	## init player health
+	#ui.get_node("HealthBar").max_value = player.get_node("Health").max_health
+	#ui.get_node("HealthBar").value = player.get_node("Health").max_health
 	player.died.connect(player_died)
 	
 	# init player aim
-	player.aim_changed.connect(ui.update_crosshair)
+	#player.aim_changed.connect(ui.update_crosshair)
 	
 	# set capture points
 	capture_points = get_tree().get_nodes_in_group("capture_points")
@@ -55,19 +53,19 @@ func toggle_pause():
 	var paused = get_tree().paused
 	# set mouse visibility
 	if paused:
+		pauseMenu.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
+		pauseMenu.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# change
 	get_tree().paused = !paused
-	pause_menu.visible = !paused
 
 
 
 func player_died():
 	pausable = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	death_screen.visible = true
 	var paused = get_tree().paused
 	get_tree().paused = !paused
 

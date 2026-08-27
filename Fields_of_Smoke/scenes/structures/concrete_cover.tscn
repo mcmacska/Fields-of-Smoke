@@ -142,6 +142,6 @@ depth = 30.0
 polygon = PackedVector2Array(0.99124575, 1.1264539, 1.008935, -0.443398, 2.9306502, -0.46914363)
 
 [node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="." unique_id=1370318456]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.03653717, 0.42754292, -0.82730937)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.035, 2)
 depth = 30.0
-polygon = PackedVector2Array(0.99124575, 1.1264539, 1.008935, -0.443398, 2.9306502, -0.46914363)
+polygon = PackedVector2Array(1, 0.4, 1, 0, 1.4, 0)

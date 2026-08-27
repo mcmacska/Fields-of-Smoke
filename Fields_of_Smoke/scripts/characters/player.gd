@@ -2,7 +2,9 @@ extends CharacterBody3D
 
 @export var sensitivity: float = 0.003
 @onready var camera_pivot = $CameraPivot
+@onready var ui = $CameraPivot/Camera/Ui
 @onready var camera = $CameraPivot/Camera
+@onready var interact_ray = $CameraPivot/Camera/InteractRaycast
 var pitch: float = 0.0
 var yaw: float = 0.0
 
@@ -84,6 +86,9 @@ func _ready():
 	equip_weapon(current_weapon_index)
 	# set camera origin
 	camera_origin = camera.position
+	ui.get_node("HealthBar").max_value = health.max_health
+	ui.get_node("HealthBar").value = health.max_health
+	sync_ammo()
 
 
 func _input(event):
@@ -103,14 +108,15 @@ func _input(event):
 
 
 func _process(delta):
-	if get_tree().paused:
+	if get_tree().paused or !can_move:
 		return
+	
 	# handle interactable
-	if Input.is_action_just_pressed("use") && current_interactable != null:
+	_check_interaction()
+	if Input.is_action_just_pressed("use") && current_interactable:
 		current_interactable.interact(self)
+		current_interactable = null
 	else:
-		if !can_move:
-			return
 		# handle shooting
 		if Input.is_action_pressed("shoot"):
 			current_weapon.trigger_held(camera.global_transform)
@@ -298,14 +304,30 @@ func add_recoil_effect():
 	recoil_target += recoil_vertical
 	# horizontal kick
 	recoil_yaw_target += randf_range(-recoil_horizontal, recoil_horizontal)
+
+
+func _check_interaction() -> void:
+	var target: Interactable = null
 	
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+		if collider is Interactable:
+			target = collider
+		elif collider.get_parent() is Interactable:
+			target = collider.get_parent()
+	
+	if current_interactable != target:
+		if current_interactable:
+			_on_lost_target(current_interactable)
+		current_interactable = target
+		
+		if current_interactable:
+			_on_gained_target(current_interactable)
 
+func _on_gained_target(interactable: Interactable) -> void:
+	print("Seen ", interactable.Name)
+	# ui TODO
 
-func _on_interaction_detector_area_entered(area: Area3D) -> void:
-	if area.owner is Interactable:
-		current_interactable = area.owner
-
-
-func _on_interaction_detector_area_exited(area: Area3D) -> void:
-	if area.owner is Interactable:
-		current_interactable = null
+func _on_lost_target(interactable: Interactable) -> void:
+	print("Lost", interactable.Name)
+	# ui TODO

@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://giww70gecgt5" path="res://scenes/weapons/machine_gun.tscn" id="3_nabwx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nabwx"]
-radius = 1.0304823
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0vhv"]
 albedo_color = Color(0.18039216, 0.19215687, 0.21568628, 1)
@@ -39,6 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010510087, 0.034969747, -1.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.002943)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=926260941]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1124718502]
 shape = SubResource("SphereShape3D_nabwx")

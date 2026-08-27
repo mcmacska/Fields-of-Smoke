@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://bx2c1htcswki1" path="res://scenes/characters/camera.gd" id="4_bs8hp"]
 [ext_resource type="PackedScene" uid="uid://lb622yjiln5v" path="res://scenes/characters/player_mesh.tscn" id="4_ifusu"]
 [ext_resource type="Script" uid="uid://cykjvjlwdyeij" path="res://scripts/characters/weapon_holder.gd" id="5_atpat"]
+[ext_resource type="PackedScene" uid="uid://cmlywluvl53jp" path="res://scenes/screens/death_screen.tscn" id="5_eojnx"]
+[ext_resource type="PackedScene" uid="uid://bc3d6w0jbe7wm" path="res://scenes/ui/ui.tscn" id="6_qgnko"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vsclp"]
 radius = 0.25341797
@@ -48,9 +50,6 @@ size = Vector3(0.01, 0.02, 0.2)
 radius = 0.16
 height = 0.5
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_atpat"]
-radius = 0.8892095
-
 [node name="Player" type="CharacterBody3D" unique_id=1976144270 groups=["friends", "player"]]
 collision_mask = 7
 script = ExtResource("1_vsclp")
@@ -71,6 +70,16 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5690636, -0.0018848777)
 cull_mask = 1048567
 script = ExtResource("4_bs8hp")
+
+[node name="DeathScreen" parent="CameraPivot/Camera" unique_id=1159156638 instance=ExtResource("5_eojnx")]
+
+[node name="Ui" parent="CameraPivot/Camera" unique_id=1248740023 instance=ExtResource("6_qgnko")]
+
+[node name="InteractRaycast" type="RayCast3D" parent="CameraPivot/Camera" unique_id=1912072886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010988355, 0.0018848777)
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+collide_with_areas = true
 
 [node name="Face" type="Node3D" parent="CameraPivot" unique_id=652910744]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -107,8 +116,6 @@ layers = 8
 mesh = SubResource("BoxMesh_eojnx")
 
 [node name="WeaponnWallDetector" type="Area3D" parent="CameraPivot" unique_id=1194040110]
-collision_layer = 7
-collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraPivot/WeaponnWallDetector" unique_id=1439418923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.653, -0.44137)
@@ -120,12 +127,10 @@ script = ExtResource("5_atpat")
 camera_p = NodePath("../CameraPivot")
 player = NodePath("..")
 
-[node name="InteractionDetector" type="Area3D" parent="." unique_id=1165846523]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionDetector" unique_id=28911492]
-shape = SubResource("SphereShape3D_atpat")
-
+[connection signal="aim_changed" from="." to="CameraPivot/Camera/Ui" method="update_crosshair"]
+[connection signal="ammo_changed" from="." to="CameraPivot/Camera/Ui" method="update_ammo"]
+[connection signal="died" from="." to="CameraPivot/Camera/DeathScreen" method="start"]
+[connection signal="hit" from="." to="CameraPivot/Camera/Ui" method="_on_hit"]
+[connection signal="health_changed" from="Health" to="CameraPivot/Camera/Ui" method="_on_health_changed"]
 [connection signal="body_entered" from="CameraPivot/WeaponnWallDetector" to="WeaponHolder" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="CameraPivot/WeaponnWallDetector" to="WeaponHolder" method="_on_area_3d_body_exited"]
-[connection signal="area_entered" from="InteractionDetector" to="." method="_on_interaction_detector_area_entered"]
-[connection signal="area_exited" from="InteractionDetector" to="." method="_on_interaction_detector_area_exited"]

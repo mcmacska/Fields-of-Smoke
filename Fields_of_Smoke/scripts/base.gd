@@ -35,6 +35,8 @@ func _ready() -> void:
 
 	
 func _process(delta: float) -> void:
+	if get_tree().paused:
+		return
 	calculate_capture(delta)
 	set_colors(delta)
 

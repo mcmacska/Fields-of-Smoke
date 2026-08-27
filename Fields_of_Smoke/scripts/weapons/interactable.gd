@@ -1,5 +1,8 @@
 class_name Interactable
 extends Node3D
 
-func interact(player):
-	pass
+var interacted = false
+@export var Name = "Interactable"
+
+func interact(_player):
+	interacted = true

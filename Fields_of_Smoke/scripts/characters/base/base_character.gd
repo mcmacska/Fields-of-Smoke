@@ -4,7 +4,6 @@ class_name BaseCharacter2
 
 #var current_target: Node2D = null
 
-@onready var body = $Body
 
 var push_direction: Vector3 = Vector3()
 
@@ -34,6 +33,7 @@ func set_push_strength(strength, direction):
 
 func _on_health_died() -> void:
 	is_dead = true
+	drop()
 	died.emit()
 	body.global_transform = global_transform
 	body.reparent(get_parent(), true)

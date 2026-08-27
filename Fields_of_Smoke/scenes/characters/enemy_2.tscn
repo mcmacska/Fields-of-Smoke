@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c6pey2hbuar2l"]
 
 [ext_resource type="Script" uid="uid://b23gkiw3s2xye" path="res://scripts/characters/base/base_character.gd" id="1_k4xaa"]
+[ext_resource type="PackedScene" uid="uid://627fo52tgw1e" path="res://scenes/misc/loot_drop.tscn" id="2_7fwsr"]
 [ext_resource type="PackedScene" uid="uid://cgxyl50ai646i" path="res://scenes/characters/enemy_body.tscn" id="2_aydar"]
 [ext_resource type="Script" uid="uid://duxj8fb6a54by" path="res://scripts/Health.gd" id="3_k4xaa"]
 [ext_resource type="PackedScene" uid="uid://c8hc4y4nw5rsk" path="res://scenes/weapons/weapon.tscn" id="3_oo0ni"]
@@ -19,6 +20,7 @@ collision_mask = 7
 script = ExtResource("1_k4xaa")
 nav_agent_3d = NodePath("NavigationAgent3D")
 weapon = NodePath("Weapon")
+loot = ExtResource("2_7fwsr")
 max_health = 50
 dead_scene = ExtResource("2_aydar")
 speed = 8.0

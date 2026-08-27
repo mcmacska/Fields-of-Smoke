@@ -2,9 +2,6 @@ extends BaseStats
 
 class_name BaseHelper
 
-@export var weapon: Node3D
-@onready var muzzle: Node3D = $Muzzle
-
 func get_closest_base() -> Node3D:
 	var closest = null
 	var min_dist = INF
@@ -51,3 +48,11 @@ func create_ray(body: Node3D) -> bool:
 	if result:
 		return result.collider == body # print("somebody touched my spaget")
 	return false
+
+func drop():
+	if loot:
+		var drop_instance = loot.instantiate()
+		
+		get_parent().add_child(drop_instance)
+		
+		drop_instance.global_position = global_position

@@ -1,5 +1,10 @@
 extends CanvasLayer
 
+func _ready() -> void:
+	visible = false
+
+func start():
+	visible = true
 
 func _on_respawn_pressed() -> void:
 	pass # Replace with function body.
