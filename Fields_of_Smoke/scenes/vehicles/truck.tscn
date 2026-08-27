@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cpn6su15mtsa4"]
+
+[ext_resource type="PackedScene" uid="uid://cw8pmx78e4bs1" path="res://assets/vehicles/truck.glb" id="1_t0jn6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0jn6"]
+size = Vector3(5.484436, 2.183899, 1.8270264)
+
+[node name="truck" unique_id=249092042 instance=ExtResource("1_t0jn6")]
+
+[node name="Body" parent="." index="0" unique_id=1536109586]
+transform = Transform3D(2.3856568, 0, 0, 0, 1.7892426, 0, 0, 0, 4.7713137, -0.33154428, 0.462528, -0.05449581)
+
+[node name="FrontTires" parent="." index="1" unique_id=27736710]
+transform = Transform3D(0.46935153, 0, 0, 0, 0, -0.46935153, 0, 0.8666943, 0, 1.9823267, 0.474855, -0.050058946)
+
+[node name="BackTires" parent="." index="2" unique_id=1160402321]
+transform = Transform3D(0.46935153, 0, 0, 0, 0, -0.46935153, 0, 0.8666943, 0, -1.6492221, 0.474855, -0.050058946)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3" unique_id=930119451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046966553, 1.0957336, -0.054748535)
+shape = SubResource("BoxShape3D_t0jn6")
+debug_fill = false
