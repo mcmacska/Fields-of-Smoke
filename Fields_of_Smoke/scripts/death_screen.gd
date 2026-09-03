@@ -2,6 +2,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	visible = false
+	
 
 func start():
 	visible = true

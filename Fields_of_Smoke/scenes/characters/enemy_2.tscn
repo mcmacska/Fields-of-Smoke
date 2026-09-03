@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b23gkiw3s2xye" path="res://scripts/characters/base/base_character.gd" id="1_k4xaa"]
 [ext_resource type="PackedScene" uid="uid://627fo52tgw1e" path="res://scenes/misc/loot_drop.tscn" id="2_7fwsr"]
-[ext_resource type="PackedScene" uid="uid://cgxyl50ai646i" path="res://scenes/characters/enemy_body.tscn" id="2_aydar"]
 [ext_resource type="Script" uid="uid://duxj8fb6a54by" path="res://scripts/Health.gd" id="3_k4xaa"]
 [ext_resource type="PackedScene" uid="uid://c8hc4y4nw5rsk" path="res://scenes/weapons/weapon.tscn" id="3_oo0ni"]
 [ext_resource type="PackedScene" uid="uid://ctvsd1dx23lon" path="res://scenes/characters/enemy_body_2.tscn" id="5_tn5vm"]
@@ -22,7 +21,7 @@ nav_agent_3d = NodePath("NavigationAgent3D")
 weapon = NodePath("Weapon")
 loot = ExtResource("2_7fwsr")
 max_health = 50
-dead_scene = ExtResource("2_aydar")
+dead_scene = ExtResource("5_tn5vm")
 speed = 8.0
 friends_group_name = "enemies"
 enemies_group_name = "friends"

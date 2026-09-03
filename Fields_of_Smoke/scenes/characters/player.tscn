@@ -71,9 +71,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5690636, -0.0018848777)
 cull_mask = 1048567
 script = ExtResource("4_bs8hp")
 
-[node name="DeathScreen" parent="CameraPivot/Camera" unique_id=1159156638 instance=ExtResource("5_eojnx")]
-
 [node name="Ui" parent="CameraPivot/Camera" unique_id=1248740023 instance=ExtResource("6_qgnko")]
+
+[node name="DeathScreen" parent="CameraPivot/Camera" unique_id=1159156638 instance=ExtResource("5_eojnx")]
 
 [node name="InteractRaycast" type="RayCast3D" parent="CameraPivot/Camera" unique_id=1912072886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010988355, 0.0018848777)

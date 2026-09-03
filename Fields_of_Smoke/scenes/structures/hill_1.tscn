@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b76ngjc4ow7oy"]
+
+[ext_resource type="PackedScene" uid="uid://cxhcvkrllwfy1" path="res://assets/structures/hill_1.glb" id="1_pf3m3"]
+
+[node name="hill_1" unique_id=614893280 instance=ExtResource("1_pf3m3")]

@@ -50,25 +50,13 @@ transform = Transform3D(0.32082793, 0, -0.9471375, 0, 1, 0, 0.9471375, 0, 0.3208
 [node name="Enemy1" parent="." unique_id=420266639 instance=ExtResource("6_cs2f8")]
 transform = Transform3D(-0.98136646, 0, 0.1921452, 0, 1, 0, -0.1921452, 0, -0.98136646, 6.4953337, -0.9284524, -162.5321)
 max_health = 100
-dead_scene = null
-speed = 10.0
-friends_group_name = ""
-enemies_group_name = ""
 
 [node name="Enemy2" parent="." unique_id=1336977627 instance=ExtResource("6_cs2f8")]
 transform = Transform3D(-0.9672411, 0, -0.25385916, 0, 1, 0, 0.25385916, 0, -0.9672411, -12.778916, -0.9284524, -162.5321)
 max_health = 100
-dead_scene = null
-speed = 10.0
-friends_group_name = ""
-enemies_group_name = ""
 
 [node name="Friend1" parent="." unique_id=1977722120 instance=ExtResource("8_0fkex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.595411, 1.3723059, 56.30817)
-dead_scene = null
-speed = 10.0
-friends_group_name = ""
-enemies_group_name = ""
 should_capture = false
 
 [node name="Friend2" parent="." unique_id=362117341 instance=ExtResource("8_0fkex")]
