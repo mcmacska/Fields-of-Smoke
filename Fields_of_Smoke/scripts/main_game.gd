@@ -53,10 +53,10 @@ func toggle_pause():
 	var paused = get_tree().paused
 	# set mouse visibility
 	if paused:
-		pauseMenu.visible = false
+		pauseMenu.change_visibility(false)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
-		pauseMenu.visible = true
+		pauseMenu.change_visibility(true)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# change
 	get_tree().paused = !paused

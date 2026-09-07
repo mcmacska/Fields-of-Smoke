@@ -39,5 +39,11 @@ text = "Resume"
 layout_mode = 2
 text = "Exit to main menu"
 
+[node name="Achies" type="Label" parent="." unique_id=1381620303]
+custom_minimum_size = Vector2(400, 300)
+offset_right = 40.0
+offset_bottom = 23.0
+autowrap_mode = 2
+
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitToMainMenu" to="." method="_on_exit_to_main_menu_pressed"]

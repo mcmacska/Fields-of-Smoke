@@ -19,10 +19,6 @@ func _ready() -> void:
 	fuse_timer.start()
 
 
-func _process(delta: float) -> void:
-	pass
-	
-
 func _on_fuse_timeout() -> void:
 	fuse_timer.stop()
 	# apply damage

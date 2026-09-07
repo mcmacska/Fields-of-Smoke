@@ -36,9 +36,9 @@ func get_closest_target():
 	return closest
 
 
-func create_ray(body: Node3D) -> bool:
+func create_ray(body_node: Node3D) -> bool:
 	var from = global_position + eye_level_origin
-	var to = body.global_position
+	var to = body_node.global_position
 	
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(from, to)
@@ -46,7 +46,7 @@ func create_ray(body: Node3D) -> bool:
 	
 	var result = space_state.intersect_ray(query)
 	if result:
-		return result.collider == body # print("somebody touched my spaget")
+		return result.collider == body_node # print("somebody touched my spaget")
 	return false
 
 func drop():

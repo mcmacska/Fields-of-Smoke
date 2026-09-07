@@ -13,9 +13,9 @@ func _ready() -> void:
 	pass
 	
 	
-func setup_bar(max_value: float, name: String):
+func setup_bar(max_value: float, Name: String):
 	progress_bar.max_value = max_value
-	bar_name.text = name
+	bar_name.text = Name
 	
 	
 func set_progress(progress: float, color: Color):

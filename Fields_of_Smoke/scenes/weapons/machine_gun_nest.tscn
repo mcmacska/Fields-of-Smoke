@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://giww70gecgt5" path="res://scenes/weapons/machine_gun.tscn" id="3_nabwx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nabwx"]
+radius = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0vhv"]
 albedo_color = Color(0.18039216, 0.19215687, 0.21568628, 1)
@@ -14,6 +15,8 @@ size = Vector3(0.3, 0.1, 0.3)
 
 [node name="Nest" type="Node3D" unique_id=70947009]
 script = ExtResource("1_h0vhv")
+sensitivity = null
+Name = null
 
 [node name="YawPivot" type="Node3D" parent="." unique_id=1735268843]
 

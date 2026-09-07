@@ -13,25 +13,23 @@ var can_shoot: bool = true
 
 var wielder
 
-
+@warning_ignore("unused_signal")
 signal ammo_changed(current_ammo, full_ammo)
 
-
-
-func trigger_pressed(camera_transform: Transform3D):
+func trigger_pressed(_camera_trans: Transform3D):
 	pass
 
-func trigger_held(camera_transform: Transform3D):
+func trigger_held(_camera_trans: Transform3D):
 	pass
 
-func trigger_released(camera_transform: Transform3D):
+func trigger_released(_camera_trans: Transform3D):
 	pass
 
 
-func primary_action(camera_transform: Transform3D):
+func primary_action(_camera_trans: Transform3D):
 	pass
 
-func secondary_action(ads: bool):
+func secondary_action(_ads: bool):
 	pass
 
 func reload():

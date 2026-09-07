@@ -118,7 +118,7 @@ func _on_body_died(body: Node3D) -> void:
 	
 
 # VISUALS
-func set_colors(delta: float):
+func set_colors(_delta: float):
 	var direction = sign(capture_progress) # -1, 0, or 1
 	var amount = abs(capture_progress)
 	if progress < 0.05:
