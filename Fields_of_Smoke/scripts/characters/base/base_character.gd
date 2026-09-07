@@ -38,5 +38,6 @@ func _on_health_died() -> void:
 	body.global_transform = global_transform
 	body.reparent(get_parent(), true)
 	body.died(push_direction.normalized() * push_strength)
+	Achievements.increment_stat("kills", 1)
 	queue_free()
 	

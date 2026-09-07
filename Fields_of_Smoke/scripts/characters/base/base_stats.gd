@@ -28,7 +28,9 @@ var bases: Array[Node] = []
 var base_target: Node
 var targets: Array = []
 
+@warning_ignore("unused_signal")
 signal died()
+@warning_ignore("unused_signal")
 signal health_changed(current, max)
 
 func _ready() -> void:
@@ -38,11 +40,11 @@ func _ready() -> void:
 	print("bases: ", bases)
 
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(body_node: Node3D) -> void:
 	if body.is_in_group(enemies_group_name):
-		targets.append(body)
+		targets.append(body_node)
 
 
-func _on_area_3d_body_exited(body: Node3D) -> void:
+func _on_area_3d_body_exited(body_node: Node3D) -> void:
 	if body.is_in_group(enemies_group_name):
-		targets.erase(body)
+		targets.erase(body_node)

@@ -22,7 +22,7 @@ var original_weapon_index: int = 0
 var can_use = true
 
 func _ready() -> void:
-	pass
+	Name = "Machine gun"
 
 
 func _input(event: InputEvent) -> void:
@@ -60,7 +60,8 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	if Input.is_action_pressed("shoot"):
-		weapon.trigger_held(bullet_origin.global_transform)
+		if (await weapon.trigger_held(bullet_origin.global_transform) == true):
+			Achievements.increment_stat("shot", 1)
 	if Input.is_action_just_pressed("shoot"):
 		weapon.trigger_pressed(bullet_origin.global_transform)
 	if Input.is_action_just_released("shoot"):
@@ -109,7 +110,6 @@ func enter_mg(body: Node3D):
 
 func _on_timer_timeout():
 	can_use = true
-	print("Sex")
 
 
 func leave_mg(body: Node3D):

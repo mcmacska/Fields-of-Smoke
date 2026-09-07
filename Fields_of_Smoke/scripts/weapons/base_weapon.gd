@@ -55,16 +55,16 @@ func _process(delta: float) -> void:
 	position = base_pos + Vector3(0, 0, recoil_z)
 
 
-func primary_action(camera_transform: Transform3D):
+func primary_action(camera_trans: Transform3D) -> bool:
 	if not can_shoot or is_reloading:
-		return
+		return false
 	# auto reload if empty
 	if current_ammo <= 0:
 		reload()
-		return
+		return false
 	can_shoot = false
 	# cast ray
-	create_ray(camera_transform, wielder)
+	create_ray(camera_trans, wielder)
 	# add effects
 	await shooting_effects()
 	# add to the scene tree
@@ -75,15 +75,16 @@ func primary_action(camera_transform: Transform3D):
 	# cooldown
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
+	return true
 
 
 func secondary_action(ads: bool):
 	is_ads = ads
 
 	
-func create_ray(camera_transform: Transform3D, shooter: CharacterBody3D):
-	var from = camera_transform.origin
-	var direction = -camera_transform.basis.z
+func create_ray(camera_trans: Transform3D, shooter: CharacterBody3D):
+	var from = camera_trans.origin
+	var direction = -camera_trans.basis.z
 	# intentional innaccuracy
 	direction += Vector3(
 		randf_range(-accuracy, accuracy),
@@ -105,8 +106,8 @@ func create_ray(camera_transform: Transform3D, shooter: CharacterBody3D):
 		
 		
 func apply_damage(body: Node3D, shooter: CharacterBody3D):
-	print("Detected:", body.name)
-	var is_player = false
+	#print("Detected:", body.name)
+	#var is_player = false
 	if body.is_in_group("friends") and shooter.is_in_group("friends"):
 		return
 	if body.is_in_group("enemies") and shooter.is_in_group("enemies"):

@@ -13,16 +13,16 @@ func _ready() -> void:
 	pass
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# scale, so it is visible from far away
 	var dist = global_position.distance_to(camera.global_position)
 	var scale_factor = clamp(dist * 0.16, 1.0, 32.0)
 	scale = Vector3.ONE * scale_factor
 	
 	
-func setup_bar(max_value: float, name: String):
+func setup_bar(max_value: float, nameText: String):
 	progress_bar.max_value = max_value
-	bar_name.text = name
+	bar_name.text = nameText
 	
 	
 	

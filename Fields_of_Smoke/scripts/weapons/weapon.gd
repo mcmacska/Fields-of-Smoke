@@ -23,5 +23,5 @@ func _ready() -> void:
 	wielder = get_parent()
 
 
-func trigger_pressed(camera_transform: Transform3D):
-	primary_action(camera_transform)
+func trigger_pressed(camera_trans: Transform3D):
+	primary_action(camera_trans)

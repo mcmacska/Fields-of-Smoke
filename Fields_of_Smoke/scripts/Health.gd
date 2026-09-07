@@ -14,6 +14,7 @@ func take_damage(amount):
 	print("damage taken: ", amount)
 	health -= amount
 	emit_signal("health_changed", health, max_health)
+	Achievements.increment_stat("hit", 1)
 
 	if health <= 0:
 		emit_signal("died")

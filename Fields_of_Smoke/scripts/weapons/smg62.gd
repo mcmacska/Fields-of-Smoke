@@ -21,5 +21,5 @@ func _ready() -> void:
 	ads_position = Vector3(0, 0.498, -0.12)
 
 
-func trigger_held(camera_transform: Transform3D):
-	primary_action(camera_transform)
+func trigger_held(camera_trans: Transform3D) -> bool:
+	return await primary_action(camera_trans)

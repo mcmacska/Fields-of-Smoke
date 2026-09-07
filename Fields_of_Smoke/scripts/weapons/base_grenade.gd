@@ -21,11 +21,11 @@ func _ready() -> void:
 	clip_max_ammo = 1
 	
 	
-func trigger_held(camera_transform: Transform3D):
+func trigger_held(_camera_trans: Transform3D):
 	pass
 
-func trigger_released(camera_transform: Transform3D):
-	primary_action(camera_transform)
+func trigger_released(camera_trans: Transform3D):
+	primary_action(camera_trans)
 	
 	
 func primary_action(camera_transform: Transform3D):

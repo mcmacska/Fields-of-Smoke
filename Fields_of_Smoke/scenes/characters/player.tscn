@@ -76,8 +76,8 @@ script = ExtResource("4_bs8hp")
 [node name="DeathScreen" parent="CameraPivot/Camera" unique_id=1159156638 instance=ExtResource("5_eojnx")]
 
 [node name="InteractRaycast" type="RayCast3D" parent="CameraPivot/Camera" unique_id=1912072886]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010988355, 0.0018848777)
-target_position = Vector3(0, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010988355, 0.24157438)
+target_position = Vector3(0, 0, -2.5)
 collision_mask = 2
 collide_with_areas = true
 

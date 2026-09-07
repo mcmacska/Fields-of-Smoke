@@ -16,6 +16,7 @@ var recoil_target: float = 0.0
 var recoil_yaw := 0.0
 var recoil_yaw_target := 0.0
 
+signal interactable_focused(interactable: Interactable)
 
 const AIR_ACCEL: float = 0.8
 
@@ -72,6 +73,7 @@ func _on_hit():
 func _on_died():
 	is_dead = true
 	died.emit()
+	Achievements.increment_stat("deaths", 1)
 	set_process(false)
 	set_physics_process(false)
 
@@ -119,8 +121,10 @@ func _process(delta):
 	else:
 		# handle shooting
 		if Input.is_action_pressed("shoot"):
-			current_weapon.trigger_held(camera.global_transform)
+			if (await current_weapon.trigger_held(camera.global_transform) == true):
+				Achievements.increment_stat("shot", 1)
 		if Input.is_action_just_pressed("shoot"):
+			Achievements.increment_stat("shot", 1)
 			current_weapon.trigger_pressed(camera.global_transform)
 		if Input.is_action_just_released("shoot"):
 			current_weapon.trigger_released(camera.global_transform)
@@ -143,6 +147,7 @@ func _process(delta):
 			current_weapon.reload()
 		if Input.is_action_just_pressed("run"):
 			internal_speed_changer = 2
+			Achievements.increment_stat("shift", 1)
 		if Input.is_action_just_released("run"):
 			internal_speed_changer = 1
 		# recoil vertical
@@ -262,7 +267,7 @@ func equip_weapon(index: int):
 
 
 func _on_weapon_ammo_changed(current_, max_):
-	print("ammo changed: ", current_, max_)
+	#print("ammo changed: ", current_, max_)
 	ammo_changed.emit(current_, max_)
 
 	
@@ -316,18 +321,7 @@ func _check_interaction() -> void:
 		elif collider.get_parent() is Interactable:
 			target = collider.get_parent()
 	
+	interactable_focused.emit(target)
+	
 	if current_interactable != target:
-		if current_interactable:
-			_on_lost_target(current_interactable)
 		current_interactable = target
-		
-		if current_interactable:
-			_on_gained_target(current_interactable)
-
-func _on_gained_target(interactable: Interactable) -> void:
-	print("Seen ", interactable.Name)
-	# ui TODO
-
-func _on_lost_target(interactable: Interactable) -> void:
-	print("Lost", interactable.Name)
-	# ui TODO

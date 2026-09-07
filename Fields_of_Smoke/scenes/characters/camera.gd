@@ -5,8 +5,3 @@ extends Camera3D
 func _ready() -> void:
 	print("ACTIVE CAMERA:", self)
 	current = true
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
