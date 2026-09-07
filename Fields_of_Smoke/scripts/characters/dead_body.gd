@@ -2,7 +2,7 @@ extends Node3D
 
 
 @onready var skeleton_sim = $"Armature/Skeleton3D/PhysicalBoneSimulator3D"
-@onready var bone = $"Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone torso"
+@onready var bone = $"Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Torso"
 
 
 func died(push: Vector3) -> void:

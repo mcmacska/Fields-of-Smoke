@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://duxj8fb6a54by" path="res://scripts/Health.gd" id="3_k4xaa"]
 [ext_resource type="PackedScene" uid="uid://c8hc4y4nw5rsk" path="res://scenes/weapons/weapon.tscn" id="3_oo0ni"]
 [ext_resource type="PackedScene" uid="uid://ctvsd1dx23lon" path="res://scenes/characters/enemy_body_2.tscn" id="5_tn5vm"]
+[ext_resource type="PackedScene" uid="uid://bxueh1k3fujxm" path="res://scenes/characters/enemy_high_poly.tscn" id="6_7fwsr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n06jw"]
 radius = 0.25585938
@@ -39,7 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27998573, 0.23137525, 0)
 [node name="Muzzle" type="Node3D" parent="." unique_id=2073667034]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Body" parent="." unique_id=1336609887 instance=ExtResource("5_tn5vm")]
+[node name="Body" parent="." unique_id=928880482 instance=ExtResource("6_7fwsr")]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1823080115 groups=["enemies"]]
 visible = false

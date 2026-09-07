@@ -47,11 +47,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0488472, 0.28761888, 53.885
 [node name="Player" parent="." unique_id=1976144270 instance=ExtResource("4_q7ch5")]
 transform = Transform3D(0.32082793, 0, -0.9471375, 0, 1, 0, 0.9471375, 0, 0.32082793, -15.07647, 1.0126235, 61.139534)
 
-[node name="Enemy1" parent="." unique_id=420266639 instance=ExtResource("6_cs2f8")]
+[node name="Enemy1" parent="." unique_id=1336977627 instance=ExtResource("6_cs2f8")]
 transform = Transform3D(-0.98136646, 0, 0.1921452, 0, 1, 0, -0.1921452, 0, -0.98136646, 6.4953337, -0.9284524, -162.5321)
 max_health = 100
 
-[node name="Enemy2" parent="." unique_id=1336977627 instance=ExtResource("6_cs2f8")]
+[node name="Enemy2" parent="." unique_id=1528038166 instance=ExtResource("6_cs2f8")]
 transform = Transform3D(-0.9672411, 0, -0.25385916, 0, 1, 0, 0.25385916, 0, -0.9672411, -12.778916, -0.9284524, -162.5321)
 max_health = 100
 
