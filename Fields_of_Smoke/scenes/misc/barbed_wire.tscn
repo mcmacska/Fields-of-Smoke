@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://46sh1prxgymp"]
+
+[ext_resource type="PackedScene" uid="uid://c8rj0tdauwvhl" path="res://assets/misc/barbed_wire.glb" id="1_tbhg5"]
+[ext_resource type="Script" uid="uid://6juaro63qtyn" path="res://scripts/misc/barbed_wire.gd" id="2_jxpar"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbhg5"]
+size = Vector3(0.1726532, 1.4983215, 2.2746582)
+
+[node name="barbed_wire" unique_id=1565468148 instance=ExtResource("1_tbhg5")]
+script = ExtResource("2_jxpar")
+
+[node name="DamageArea" type="Area3D" parent="." index="6" unique_id=298732098]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea" index="0" unique_id=1868871380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.866455e-05, 0.0004119873, -0.00012207031)
+shape = SubResource("BoxShape3D_tbhg5")

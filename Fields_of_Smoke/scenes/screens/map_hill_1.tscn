@@ -100,6 +100,8 @@ material = SubResource("FogMaterial_q7ch5")
 
 [node name="Nest" parent="." unique_id=70947009 instance=ExtResource("13_vmp0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.122585, 12.273897, 47.37685)
+sensitivity = 0.002
+Name = "Interactable"
 
 [node name="truck1" parent="." unique_id=249092042 groups=["navigation_mesh_source_group"] instance=ExtResource("12_8mkih")]
 transform = Transform3D(-0.002943235, 0.055255238, -0.9984679, -0.053108484, 0.99705446, 0.055333573, 0.9985844, 0.053189978, -4.3649514e-08, -22.915394, 8.590776, 149.9057)
