@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://18sfoyps2i4b"]
+
+[ext_resource type="PackedScene" uid="uid://cdfjrfipndoq1" path="res://assets/structures/bunker.glb" id="1_3pf4t"]
+[ext_resource type="PackedScene" uid="uid://cs0bg00kamhhu" path="res://assets/structures/map_1.glb" id="1_ff322"]
+[ext_resource type="PackedScene" uid="uid://d0q05auuto2ra" path="res://scenes/structures/concrete_cover.tscn" id="2_7d4wa"]
+
+[node name="Trench" type="Node3D" unique_id=313809477]
+
+[node name="bunker2" parent="." unique_id=157336533 instance=ExtResource("1_3pf4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.546772, 0, 17.62061)
+
+[node name="concrete_cover" parent="." unique_id=544455573 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 0.432, 4.608019)
+
+[node name="concrete_cover2" parent="." unique_id=1418725085 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 0.432, 4.608019)
+
+[node name="concrete_cover3" parent="." unique_id=404432271 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, 0.432, 4.608019)
+
+[node name="concrete_cover4" parent="." unique_id=406803810 instance=ExtResource("2_7d4wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.5, 0.432, 4.608019)
+
+[node name="map_1" parent="." unique_id=2083810092 instance=ExtResource("1_ff322")]

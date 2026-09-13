@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://di1h8656itdcf" path="res://scripts/main_game.gd" id="1_0fdm5"]
 [ext_resource type="Texture2D" uid="uid://cfgxdv2w3l564" path="res://assets/background/sky_1.exr" id="2_8avj2"]
-[ext_resource type="PackedScene" uid="uid://18sfoyps2i4b" path="res://scenes/structures/trench.tscn" id="3_dnoeg"]
+[ext_resource type="PackedScene" uid="uid://18sfoyps2i4b" path="res://scenes/structures/map_1.tscn" id="3_dnoeg"]
 [ext_resource type="PackedScene" uid="uid://dmh0xdhi3qwgo" path="res://scenes/characters/player.tscn" id="4_w1orc"]
 [ext_resource type="PackedScene" uid="uid://bc3d6w0jbe7wm" path="res://scenes/ui/ui.tscn" id="7_4f1rw"]
 [ext_resource type="PackedScene" uid="uid://baxgt4igkjr72" path="res://scenes/screens/pause_menu.tscn" id="9_3wr2b"]

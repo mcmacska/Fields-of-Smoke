@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0ygp2kf8timk"
-path.s3tc="res://.godot/imported/trench_1_dirt_color.png-e072fedcb8b0a3104309f3c44b48e638.s3tc.ctex"
+uid="uid://cqkpm52apmr1k"
+path.s3tc="res://.godot/imported/map_1_barbed_wire.png-e23afe0041317a3291e84fc03893ae60.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "086497bf1d8ad82aaed32ca040a6092b"
+"md5": "79e24628db9680b2bc1535cac05e0cf6"
 }
 
 [deps]
 
-source_file="res://assets/structures/trench_1_dirt_color.png"
-dest_files=["res://.godot/imported/trench_1_dirt_color.png-e072fedcb8b0a3104309f3c44b48e638.s3tc.ctex"]
+source_file="res://assets/structures/map_1_barbed_wire.png"
+dest_files=["res://.godot/imported/map_1_barbed_wire.png-e23afe0041317a3291e84fc03893ae60.s3tc.ctex"]
 
 [params]
 
