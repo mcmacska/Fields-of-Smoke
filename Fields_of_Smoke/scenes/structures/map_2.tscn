@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bgvu018vpn1te"]
+
+[ext_resource type="PackedScene" uid="uid://2s7gqbc6xdvr" path="res://assets/structures/map_2.glb" id="1_l5uhg"]
+
+[node name="map_2" unique_id=2049873146 instance=ExtResource("1_l5uhg")]

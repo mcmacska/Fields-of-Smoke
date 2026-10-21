@@ -38,13 +38,3 @@ func _ready() -> void:
 	health = max_health
 	bases = get_tree().get_nodes_in_group("capture_points")
 	print("bases: ", bases)
-
-
-func _on_area_3d_body_entered(body_node: Node3D) -> void:
-	if body.is_in_group(enemies_group_name):
-		targets.append(body_node)
-
-
-func _on_area_3d_body_exited(body_node: Node3D) -> void:
-	if body.is_in_group(enemies_group_name):
-		targets.erase(body_node)

@@ -24,9 +24,11 @@ var base
 
 func update_state(delta):
 	target = get_closest_target()
+	# print("target: ", target)
 	base = get_closest_base()
 	# if it can see the target, attack it
 	if target:
+		print("target: ", target)
 		if global_position.distance_to(target.global_position) < attack_range:
 			current_state = State.ATTACK
 		else:

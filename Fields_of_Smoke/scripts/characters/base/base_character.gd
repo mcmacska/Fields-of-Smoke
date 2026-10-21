@@ -41,3 +41,11 @@ func _on_health_died() -> void:
 	Achievements.increment_stat("kills", 1)
 	queue_free()
 	
+func _on_area_3d_body_entered(body_node: Node3D) -> void:
+	if body_node.is_in_group(enemies_group_name):
+		targets.append(body_node)
+
+
+func _on_area_3d_body_exited(body_node: Node3D) -> void:
+	if body_node.is_in_group(enemies_group_name):
+		targets.erase(body_node)
