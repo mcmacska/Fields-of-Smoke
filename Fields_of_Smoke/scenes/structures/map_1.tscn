@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cs0bg00kamhhu" path="res://assets/structures/map_1.glb" id="1_ff322"]
 [ext_resource type="PackedScene" uid="uid://d0q05auuto2ra" path="res://scenes/structures/concrete_cover.tscn" id="2_7d4wa"]
 
+[sub_resource type="FogMaterial" id="FogMaterial_128hy"]
+density = 0.8
+edge_fade = 0.5
+
 [node name="Trench" type="Node3D" unique_id=313809477]
 
 [node name="concrete_cover" parent="." unique_id=544455573 instance=ExtResource("2_7d4wa")]
@@ -17,4 +21,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, 0.432, 4.608019)
 [node name="concrete_cover4" parent="." unique_id=406803810 instance=ExtResource("2_7d4wa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.5, 0.432, 4.608019)
 
-[node name="map_1" parent="." unique_id=1465186291 instance=ExtResource("1_ff322")]
+[node name="map_1" parent="." unique_id=1573673774 instance=ExtResource("1_ff322")]
+
+[node name="FogVolume" type="FogVolume" parent="." unique_id=1912331361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2216797, 4.216503, -313.88815)
+size = Vector3(315.98, 9.204712, 77.07)
+material = SubResource("FogMaterial_128hy")

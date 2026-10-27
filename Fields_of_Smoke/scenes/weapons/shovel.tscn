@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://c5kinpbo7ia4n"]
 
-[ext_resource type="Script" uid="uid://x0po3mwnhjp3" path="res://scripts/weapons/weapon.gd" id="1_rur4l"]
-[ext_resource type="PackedScene" uid="uid://1eeivr1vor4q" path="res://scenes/misc/bullet_hole.tscn" id="2_v78sr"]
+[ext_resource type="Script" uid="uid://wv0mpq1ounjk" path="res://scripts/weapons/shovel.gd" id="1_nr7ly"]
 [ext_resource type="AudioStream" uid="uid://mpt1joh3um3u" path="res://assets/weapons/gunshot_rifle.mp3" id="5_8phrd"]
 [ext_resource type="PackedScene" uid="uid://dq44mben7ka4k" path="res://assets/weapons/shovel.glb" id="6_rur4l"]
 
 [node name="Weapon" type="Node3D" unique_id=70947009]
-script = ExtResource("1_rur4l")
-bullet_hole_scene = ExtResource("2_v78sr")
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0)
+script = ExtResource("1_nr7ly")
 
 [node name="shovel" parent="." unique_id=2039577763 instance=ExtResource("6_rur4l")]
 transform = Transform3D(0.70710677, 1.2802769e-08, 0.70710677, 0.70710677, -3.090862e-08, -0.70710677, 1.2802769e-08, 1, -3.090862e-08, 0, 0, -0.3923889)
